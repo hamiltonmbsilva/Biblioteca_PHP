@@ -24,9 +24,14 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5',
-            'description' => 'required|min:5',
-            'address' => 'required|min:5'
+
+            'name'=> 'required|min:5',
+            'email'=> 'required|min:5',
+            'password'=> 'required|min:5',
+            'idade'=> 'required|min:5',
+            'cpf'=> 'required|min:5',
+            'rg'=> 'required|min:5'
+
         ];
     }
 
@@ -34,8 +39,11 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => 'Campo nome é obrigatorio',
-            'description.required' => 'Campo descrição é obrigatorio',
-            'address.required' => 'Campo endereço é obrigatorio',
+            'email.required' => 'Campo email é obrigatorio',
+            'password.required' => 'Campo senha é obrigatorio',
+            'idade.required' => 'Campo idade é obrigatorio',
+            'cpf.required' => 'Campo CPF é obrigatorio',
+            'rg.required' => 'Campo RG é obrigatorio',
             '*min' => 'Quantidade minima de caracteres e 5.'
         ];
     }

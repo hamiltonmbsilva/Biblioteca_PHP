@@ -11,7 +11,7 @@
 <div class="wrapper">
 
     <header class="main-header">
-        <a href="../index2.html" class="logo"><b><h4>Biblioteca Nelson Mandela</h4></b></a>
+        <a href="{{route('home')}}" class="logo"><b><h4>Biblioteca Nelson Mandela</h4></b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -57,17 +57,17 @@
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                {{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+                                    {{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
+                                       {{--onclick="event.preventDefault();--}}
+                                          {{--document.getElementById('logout-form').submit();">--}}
+                                        {{--{{ __('Logout') }}--}}
+                                    {{--</a>--}}
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                                        {{--@csrf--}}
+                                    {{--</form>--}}
+                                {{--</div>--}}
                                 <div class="pull-right">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -109,6 +109,24 @@
               </span>
                 </div>
             </form>
+
+            <li>
+                <a href="{{route('home')}}" >
+                    <i class="fa fa-home"></i> <span>Home</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('user.index')}}" >
+                    <i class="fa fa-user"></i> <span>Usuario</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('livro.index')}}" >
+                    <i class="fa fa-book"></i> <span>Livros</span>
+                </a>
+            </li>
 
             <li>
                 <a href="pages/calendar.html">

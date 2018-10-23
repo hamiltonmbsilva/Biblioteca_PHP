@@ -590,4 +590,12 @@ input.checkbox:checked:after {
 		letter-spacing: 1.4px;
 	}
 }
+#a_login{
+    float: right;
+    color: #FFFFFF;
+}
+
+#label_login{
+    color: #FFFFFF;
+}
 /*--- //Responsive Code ---*/

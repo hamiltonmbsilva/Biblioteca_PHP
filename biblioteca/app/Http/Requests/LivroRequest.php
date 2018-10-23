@@ -13,7 +13,7 @@ class LivroRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,27 @@ class LivroRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo' => 'required|min:5',
+            'ISBN' => 'required|min:5',
+            'autores' => 'required|min:5',
+            'edicao' => 'required|min:5',
+            'editora' => 'required|min:5',
+            'ano' => 'required|min:2',
+            'assuntos' => 'required|min:2'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'titulo.required' => 'Campo Titulo é obrigatorio',
+            'ISBN.required' => 'Campo ISBN é obrigatorio',
+            'autores.required' => 'Campo Autores é obrigatorio',
+            'edicao.required' => 'Campo Edição é obrigatorio',
+            'editora.required' => 'Campo Editora é obrigatorio',
+            'ano.required' => 'Campo Ano é obrigatorio',
+            'assuntos.required' => 'Campo Assunto é obrigatorio',
+            '*min' => 'Quantidade minima de caracteres e 5.'
         ];
     }
 }

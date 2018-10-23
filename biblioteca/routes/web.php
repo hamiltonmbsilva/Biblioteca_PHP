@@ -27,16 +27,6 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::prefix('admin')->namespace('Admin')->group(function (){
 
-//        Route::prefix('restaurants')->group(function (){
-//
-//            Route::get('/', 'RestaurantController@index')->name('restaurant.index');
-//            Route::get('new', 'RestaurantController@new')->name('restaurant.new');
-//            Route::post('store', 'RestaurantController@store')->name('restaurant.store');
-//            Route::get('edit/{restaurant}', 'RestaurantController@edit')->name('restaurant.edit');
-//            Route::post('update/{id}', 'RestaurantController@update')->name('restaurant.update');
-//            Route::get('remove/{id}', 'RestaurantController@delete')->name('restaurant.remove');
-//
-//        });
 
         Route::prefix('users')->group(function (){
 
@@ -49,11 +39,16 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
-//        Route::prefix('admin')->group(function () {
-//            Route::get('usuarios', 'Admin\\UsuarioController@index')->name('usuario.index');
-//            Route::get('usuarios/new', 'Admin\\UsuarioController@new')->name('usuario.new');
-//            Route::post('usuarios/store', 'Admin\\UsuarioController@store')->name('usuario.store');
-//        });
+       Route::prefix('livros')->group(function () {
+
+            Route::get('/', 'LivroController@index')->name('livro.index');
+            Route::get('new', 'LivroController@new')->name('livro.new');
+            Route::post('store', 'LivroController@store')->name('livro.store');
+            Route::get('edit/{livro}', 'LivroController@edit')->name('livro.edit');
+            Route::post('update/{id}', 'LivroController@update')->name('livro.update');
+            Route::get('remove/{id}', 'LivroController@delete')->name('livro.remove');
+
+        });
 
         Route::prefix('admin')->group(function () {
             Route::get('categoria', 'Admin\\CategoriaController@index');
@@ -67,9 +62,7 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('exemplar', 'Admin\\ExemplareController@index');
         });
 
-        Route::prefix('admin')->group(function () {
-            Route::get('livro', 'Admin\\LivroController@index');
-        });
+
 
         Route::prefix('admin')->group(function () {
             Route::get('reserva', 'Admin\\ReservaController@index');
@@ -78,6 +71,18 @@ Route::group(['middleware' => ['auth']], function (){
         Route::prefix('admin')->group(function () {
             Route::get('tipo', 'Admin\\TipoController@index');
         });
+
+        //        Route::prefix('restaurants')->group(function (){
+//
+//            Route::get('/', 'RestaurantController@index')->name('restaurant.index');
+//            Route::get('new', 'RestaurantController@new')->name('restaurant.new');
+//            Route::post('store', 'RestaurantController@store')->name('restaurant.store');
+//            Route::get('edit/{restaurant}', 'RestaurantController@edit')->name('restaurant.edit');
+//            Route::post('update/{id}', 'RestaurantController@update')->name('restaurant.update');
+//            Route::get('remove/{id}', 'RestaurantController@delete')->name('restaurant.remove');
+//
+//        });
+
 
     });
 });

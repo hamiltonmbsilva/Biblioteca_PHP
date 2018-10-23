@@ -21,7 +21,7 @@
 <script src="{{ asset('dist/img/user4-128x128.jpg')}}" type="text/javascript"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-    $.widget.bridge('uibutton', $.ui.button);
+    // $.widget.bridge('ui.button', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.2 JS -->
 
@@ -55,7 +55,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src=" {{ asset('dist/js/demo.js')}}" type="text/javascript"></script>
-</body>
-</html>
+
 
 
