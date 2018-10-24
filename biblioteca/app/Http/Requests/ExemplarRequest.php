@@ -13,7 +13,7 @@ class ExemplarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class ExemplarRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'codigo'=> 'required|min:5',
+//        'circular'=> 'required|min:5',
+            'ano'=> 'required|min:4'
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'codigo.required' => 'Campo Codigo é obrigatorio',
+//            'circular.required' => 'Campo Circular é obrigatorio',
+            'ano.required' => 'Campo Ano é obrigatorio',
+
+            '*min' => 'Quantidade minima de caracteres e 5.'
         ];
     }
 }

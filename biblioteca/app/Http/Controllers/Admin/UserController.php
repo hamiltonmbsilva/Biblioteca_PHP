@@ -24,7 +24,7 @@ class UserController extends Controller
 
     //função para gravar um restaurante
     public function store(UserRequest $request){
-       dd('Testet de entrada');
+//       dd('Testet de entrada');
        $userData = $request->all();
 
        $request->validated();

@@ -26,10 +26,10 @@ class CategoriaController extends Controller
 
         $request->validated();
 
-        $categoria = new Livro();
+        $categoria = new Categoria();
         $categoria->create($categoriaData);
 
-        flash('Livro cadastrado com sucesso!')->success();
+        flash('Categoria cadastrada com sucesso!')->success();
         return redirect()->route('categoria.index');
     }
 
@@ -45,11 +45,11 @@ class CategoriaController extends Controller
 
         $request->validated();
 
-        $categoria = Livro::findOrFail($id);
+        $categoria = Categoria::findOrFail($id);
         $categoria->update($categoriaData);
 
 
-        flash('Livro atualizado com sucesso!')->success();
+        flash('Categoria atualizado com sucesso!')->success();
         return redirect()->route('categoria.index', ['categoria' => $id]);
     }
 
@@ -58,9 +58,9 @@ class CategoriaController extends Controller
         $categoria = Categoria::findOrFail($id);
         $categoria->delete();
 
-        print 'Livro removido com sucesso!';
+        print 'Categoria removido com sucesso!';
 
-        flash('Livro removido com sucesso!')->success();
+        flash('Categoria removido com sucesso!')->success();
         return redirect()->route('categoria.index');
     }
 }

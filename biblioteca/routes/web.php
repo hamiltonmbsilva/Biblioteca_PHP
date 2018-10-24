@@ -63,36 +63,39 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
+        Route::prefix('exemplares')->group(function () {
 
+            Route::get('/', 'ExemplareController@index')->name('exemplar.index');
+            Route::get('new', 'ExemplareController@new')->name('exemplar.new');
+            Route::post('store', 'ExemplareController@store')->name('exemplar.store');
+            Route::get('edit/{exemplar}', 'ExemplareController@edit')->name('exemplar.edit');
+            Route::post('update/{id}', 'ExemplareController@update')->name('exemplar.update');
+            Route::get('remove/{id}', 'ExemplareController@delete')->name('exemplar.remove');
 
-        Route::prefix('admin')->group(function () {
-            Route::get('endereco', 'Admin\\EnderecoController@index');
         });
 
-        Route::prefix('admin')->group(function () {
-            Route::get('exemplar', 'Admin\\ExemplareController@index');
+        Route::prefix('reservas')->group(function () {
+
+            Route::get('/', 'ReservaController@index')->name('reserva.index');
+            Route::get('new', 'ReservaController@new')->name('reserva.new');
+            Route::post('store', 'ReservaController@store')->name('reserva.store');
+            Route::get('edit/{reserva}', 'ReservaController@edit')->name('reserva.edit');
+            Route::post('update/{id}', 'ReservaController@update')->name('reserva.update');
+            Route::get('remove/{id}', 'ReservaController@delete')->name('reserva.remove');
+
         });
 
+        Route::prefix('enderecos')->group(function () {
 
+            Route::get('/', 'EnderecoController@index')->name('endereco.index');
+            Route::get('new', 'EnderecoController@new')->name('endereco.new');
+            Route::post('store', 'EnderecoController@store')->name('endereco.store');
+            Route::get('edit/{endereco}', 'EnderecoController@edit')->name('endereco.edit');
+            Route::post('update/{id}', 'EnderecoController@update')->name('endereco.update');
+            Route::get('remove/{id}', 'EnderecoController@delete')->name('endereco.remove');
 
-        Route::prefix('admin')->group(function () {
-            Route::get('reserva', 'Admin\\ReservaController@index');
         });
 
-        Route::prefix('admin')->group(function () {
-            Route::get('tipo', 'Admin\\TipoController@index');
-        });
-
-        //        Route::prefix('restaurants')->group(function (){
-//
-//            Route::get('/', 'RestaurantController@index')->name('restaurant.index');
-//            Route::get('new', 'RestaurantController@new')->name('restaurant.new');
-//            Route::post('store', 'RestaurantController@store')->name('restaurant.store');
-//            Route::get('edit/{restaurant}', 'RestaurantController@edit')->name('restaurant.edit');
-//            Route::post('update/{id}', 'RestaurantController@update')->name('restaurant.update');
-//            Route::get('remove/{id}', 'RestaurantController@delete')->name('restaurant.remove');
-//
-//        });
 
 
     });

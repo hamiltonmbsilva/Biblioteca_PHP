@@ -22,10 +22,10 @@
             @foreach($categoria as $c)
                 <tr>
                     <td>{{$c->id}}</td>
-                    <td>{{$c->titulo}}</td>
-                    <td>{{$c->autores}}</td>
-                    <td>{{$c->ano}}</td>
-                    <td>{{$c->assuntos}}</td>
+                    <td>{{$c->nome}}</td>
+                    <td>{{$c->descricao}}</td>
+                    <td>{{$c->assunto}}</td>
+
                     <td>
                         <a href="{{route('categoria.edit', ['categoria'=> $c->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('categoria.remove', ['id'=> $c->id])}}" class="btn btn-danger">Excluir</a>

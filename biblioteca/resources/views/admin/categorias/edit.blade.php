@@ -21,63 +21,24 @@
 
             <p class="form-group">
                 <label>Assunto</label>
-                <input type="text" name="ISBN" value="{{$livro->ISBN}}" class="form-control @if($errors->has('ISBN')) is-invalid @endif">
-                @if($errors->has('ISBN'))
+                <input type="text" name="assunto" value="{{$categoria->assunto}}" class="form-control @if($errors->has('assunto')) is-invalid @endif">
+                @if($errors->has('assunto'))
                     <span class="invalid-feedback">
-                       <strong>{{$errors->first('ISBN')}}</strong>
+                       <strong>{{$errors->first('assunto')}}</strong>
                     </span>
                 @endif
             </p>
 
             <p class="form-group">
-                <label>Assunto</label>
-                <input type="text" name="autores" value="{{$livro->autores}}" class="form-control @if($errors->has('autores')) is-invalid @endif">
-                @if($errors->has('autores'))
+                <label>Descrição</label>
+                <input type="text" name="descricao" value="{{$categoria->descricao}}" class="form-control @if($errors->has('descricao')) is-invalid @endif">
+                @if($errors->has('descricao'))
                     <span class="invalid-feedback">
-                       <strong>{{$errors->first('autores')}}</strong>
+                       <strong>{{$errors->first('descricao')}}</strong>
                     </span>
                 @endif
             </p>
 
-            <p class="form-group">
-                <label>Edição</label>
-                <input type="text" name="edicao" value="{{$livro->edicao}}" class="form-control @if($errors->has('edicao')) is-invalid @endif">
-                @if($errors->has('edicao'))
-                    <span class="invalid-feedback">
-                       <strong>{{$errors->first('edicao')}}</strong>
-                    </span>
-                @endif
-            </p>
-
-            <p class="form-group">
-                <label>Editora</label>
-                <input type="text" name="editora" value="{{$livro->editora}}" class="form-control @if($errors->has('editora')) is-invalid @endif">
-                @if($errors->has('editora'))
-                    <span class="invalid-feedback">
-                       <strong>{{$errors->first('editora')}}</strong>
-                    </span>
-                @endif
-            </p>
-
-            <p class="form-group">
-                <label>Ano</label>
-                <input type="text" name="ano" value="{{$livro->ano}}" class="form-control @if($errors->has('ano')) is-invalid @endif">
-                @if($errors->has('ano'))
-                    <span class="invalid-feedback">
-                       <strong>{{$errors->first('ano')}}</strong>
-                    </span>
-                @endif
-            </p>
-
-            <p class="form-group">
-                <label>Assunto</label>
-                <input type="text" name="assuntos" value="{{$livro->assuntos}}" class="form-control @if($errors->has('assuntos')) is-invalid @endif">
-                @if($errors->has('assuntos'))
-                    <span class="invalid-feedback">
-                        <strong>{{$errors->first('assuntos')}}</strong>
-                    </span>
-                @endif
-            </p>
 
 
 
