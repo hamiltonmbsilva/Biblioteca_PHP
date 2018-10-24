@@ -20,15 +20,24 @@ class UserController extends Controller
         return view('admin.users.store');
     }
 
+
+
     //função para gravar um restaurante
     public function store(UserRequest $request){
-
+       dd('Testet de entrada');
        $userData = $request->all();
 
        $request->validated();
         $userData['password'] = bcrypt($userData['password']);
         $user = new User();
+
         $user->create($userData);
+
+//        User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
+//        ]);
 
 
         flash('Usuario criado com sucesso!')->success();

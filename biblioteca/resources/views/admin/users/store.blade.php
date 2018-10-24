@@ -61,14 +61,14 @@
                 @endif
             </p>
 
-            <div class="form-group">
-                <label>Selecionar o tipo de Usuario</label>
-                <select class="form-control">
-                    <option>Bibliotecario</option>
-                    <option>Usuario</option>
+            {{--<div class="form-group">--}}
+                {{--<label>Selecionar o tipo de Usuario</label>--}}
+                {{--<select class="form-control">--}}
+                    {{--<option>Bibliotecario</option>--}}
+                    {{--<option>Usuario</option>--}}
 
-                </select>
-            </div>
+                {{--</select>--}}
+            {{--</div>--}}
 
             <p class="form-group">
                 <label>Senha</label>

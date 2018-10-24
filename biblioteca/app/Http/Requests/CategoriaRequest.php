@@ -24,7 +24,21 @@ class CategoriaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|min:5',
+            'descricao' => 'required|min:5',
+            'assunto' => 'required|min:5'
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nome.required' => 'Campo Nome é obrigatorio',
+            'descricao.required' => 'Campo Descrição é obrigatorio',
+            'assunto.required' => 'Campo Assunto é obrigatorio',
+
+            '*min' => 'Quantidade minima de caracteres e 5.'
         ];
     }
 }

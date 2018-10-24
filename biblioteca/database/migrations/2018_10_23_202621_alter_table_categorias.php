@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableLivro extends Migration
+class AlterTableCategorias extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class AlterTableLivro extends Migration
      */
     public function up()
     {
-
-//        Schema::table('livros', function (Blueprint $table){
-////
+        Schema::table('categorias', function (Blueprint $table){
 //
-//            $table->timestamp('created_at');
-//            $table->timestamp('updated_at');
-//        });
 
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        });
     }
 
     /**
@@ -30,6 +28,6 @@ class AlterTableLivro extends Migration
      */
     public function down()
     {
-//        Schema::dropIfExists('livros');
+        Schema::dropIfExists('categorias');
     }
 }

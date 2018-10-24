@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
+
+
        Route::prefix('livros')->group(function () {
 
             Route::get('/', 'LivroController@index')->name('livro.index');
@@ -50,9 +52,18 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
-        Route::prefix('admin')->group(function () {
-            Route::get('categoria', 'Admin\\CategoriaController@index');
+        Route::prefix('categorias')->group(function () {
+
+            Route::get('/', 'CategoriaController@index')->name('categoria.index');
+            Route::get('new', 'CategoriaController@new')->name('categoria.new');
+            Route::post('store', 'CategoriaController@store')->name('categoria.store');
+            Route::get('edit/{categoria}', 'CategoriaController@edit')->name('categoria.edit');
+            Route::post('update/{id}', 'CategoriaController@update')->name('categoria.update');
+            Route::get('remove/{id}', 'CategoriaController@delete')->name('categoria.remove');
+
         });
+
+
 
         Route::prefix('admin')->group(function () {
             Route::get('endereco', 'Admin\\EnderecoController@index');

@@ -22,6 +22,7 @@ class LivroController extends Controller
     //função para gravar um restaurante
     public function store(LivroRequest $request){
 
+
         $livroData = $request->all();
 
         $request->validated();
