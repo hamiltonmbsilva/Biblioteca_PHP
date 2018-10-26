@@ -96,11 +96,22 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
-
-
     });
 });
 
+Route::get('rel', function (){
 
+    $livro = \App\Livro::find(1)->titulo;
+    //print $livro->titulo;
+    print '<br>';
+
+//    foreach ($livro->exemplares as $e){
+//
+//        print 'Itens: ' . $e->codigo;
+//        print 'Itens: ' . $e->ano;
+//    }
+
+    dd($livro->post->exemplare );
+});
 
 

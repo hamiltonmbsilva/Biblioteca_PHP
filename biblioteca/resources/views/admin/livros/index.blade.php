@@ -15,6 +15,8 @@
                 <th>Autores</th>
                 <th>Ano</th>
                 <th>Assunto</th>
+                <th>Categoria</th>
+                <th>Ações</th>
             </tr>
 
             </thead>
@@ -26,6 +28,15 @@
                     <td>{{$l->autores}}</td>
                     <td>{{$l->ano}}</td>
                     <td>{{$l->assuntos}}</td>
+                    <td>@foreach($categoria as $c)
+                            @if($l->categorias_id == $c->id)
+                                {{$c->nome}}
+                            @endif
+
+
+                        @endforeach
+                    </td>
+
                     <td>
                         <a href="{{route('livro.edit', ['livro'=> $l->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('livro.remove', ['id'=> $l->id])}}" class="btn btn-danger">Excluir</a>

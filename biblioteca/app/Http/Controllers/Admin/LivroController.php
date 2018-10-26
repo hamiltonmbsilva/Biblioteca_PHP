@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\categoria;
 use App\Http\Requests\LivroRequest;
 use App\Livro;
 use Illuminate\Http\Request;
@@ -10,13 +11,15 @@ use App\Http\Controllers\Controller;
 class LivroController extends Controller
 {
     public function index(){
-
+        $categoria = Categoria::all(['id', 'nome']);
         $livro = Livro::all();
-        return view('admin.livros.index', compact('livro'));
+        return view('admin.livros.index', compact('livro','categoria'));
     }
 
     public function new(){
-        return view('admin.livros.store');
+        $categoria = Categoria::all(['id', 'nome']);
+
+        return view('admin.livros.store',compact('categoria'));
     }
 
     //função para gravar um restaurante
@@ -27,17 +30,23 @@ class LivroController extends Controller
 
         $request->validated();
 
-        $livro = new Livro();
-        $livro->create($livroData);
+//        $livro = new Livro();
+//        $livro->create($livroData);
+
+        $categoria = Categoria::find($livroData['categorias_id']);
+
+
+        $categoria->livros()->create($livroData);
+
 
         flash('Livro cadastrado com sucesso!')->success();
-        return redirect()->route('livro.index');
+        return redirect()->route('livro.index',compact('categoria'));
     }
 
     //função para editar um restaurante
     public  function edit(Livro $livro){
-
-        return view('admin.livros.edit', compact('livro'));
+        $categoria = Categoria::all(['id', 'nome']);
+        return view('admin.livros.edit', compact('livro','categoria'));
     }
 
     public function update(LivroRequest $request, $id){

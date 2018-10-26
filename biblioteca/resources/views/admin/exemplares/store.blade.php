@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <div class="container">
 
         <h1>Cadastro de Exemplares</h1>
@@ -13,6 +14,7 @@
             <p class="form-group">
                 <label>Codigo do exemplar</label>
                 <input type="text" name="codigo" value="{{old('codigo')}}" class="form-control @if($errors->has('codigo')) is-invalid @endif">
+
                 @if($errors->has('codigo'))
                     <span class="invalid-feedback">
                         <strong>{{$errors->first('codigo')}}</strong>
@@ -21,15 +23,16 @@
                 @endif
             </p>
 
-            {{--<p class="form-group">--}}
-                {{--<label>Circular</label>--}}
-                {{--<input type="text" name="circular" value="{{old('circular')}}" class="form-control @if($errors->has('circular')) is-invalid @endif">--}}
-                {{--@if($errors->has('circular'))--}}
-                    {{--<span class="invalid-feedback">--}}
-                        {{--<strong>{{$errors->first('circular')}}</strong>--}}
-                    {{--</span>--}}
-                {{--@endif--}}
-            {{--</p>--}}
+            <div class="form-group">
+                <label>Livros</label>
+                <select name="livros_id" class="form-control">
+                    @foreach($livro as $l)
+                        <option value="{{$l->id}}">{{$l->titulo}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
 
             <p class="form-group">
                 <label>Ano</label>

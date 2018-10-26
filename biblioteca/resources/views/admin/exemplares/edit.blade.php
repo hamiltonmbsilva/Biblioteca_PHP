@@ -28,6 +28,20 @@
                     </span>
                 @endif
             </p>
+
+            <div class="form-group">
+                <label>Livros</label>
+                <select name="livros_id" class="form-control">
+                    @foreach($livro as $l)
+                        <option value="{{$l->id}}"
+                            @if($exemplar->livros_id == $l->id)
+                                selected
+                             @endif
+                                >{{$l->titulo}}</option>
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <p class="form-group">
                 <label>Ano</label>
                 <input type="text" name="ano" value="{{$exemplar->ano}}" class="form-control @if($errors->has('ano')) is-invalid @endif">

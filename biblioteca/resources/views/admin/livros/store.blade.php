@@ -81,15 +81,17 @@
                 @endif
             </p>
 
-            {{--<div class="form-group">--}}
-                {{--<label>Selecionar o tipo de Livro</label>--}}
-                {{--<select class="form-control">--}}
-                    {{--<option>Impresso</option>--}}
-                    {{--<option>Digital</option>--}}
-                    {{--@if(option)--}}
+            <div class="form-group">
+                <label>Categoria</label>
+                <select name="categorias_id" class="form-control">
+                    @foreach($categoria as $c)
+                        <option value="{{$c->id}}">{{$c->nome}}</option>
 
-                {{--</select>--}}
-            {{--</div>--}}
+                    @endforeach
+                </select>
+            </div>
+
+
 
 
 

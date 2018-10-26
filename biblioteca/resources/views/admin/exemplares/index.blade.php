@@ -13,6 +13,7 @@
                 <th>#</th>
                 <th>Codigo</th>
                 <th>Circular</th>
+                <th>Nome do livro</th>
                 <th>Ano</th>
             </tr>
 
@@ -23,7 +24,10 @@
                     <td>{{$e->id}}</td>
                     <td>{{$e->codigo}}</td>
                     <td>{{$e->circular}}</td>
-                    <td>{{$e->ano}}</td>
+                    {{--<td>{{$e->livros_id}}</td>--}}
+                   <td>{{$e->livro->titulo}}</td>
+
+                    <td>{{$e->ano}}
                     <td>
                         <a href="{{route('exemplar.edit', ['exemplar'=> $e->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('exemplar.remove', ['id'=> $e->id])}}" class="btn btn-danger">Excluir</a>

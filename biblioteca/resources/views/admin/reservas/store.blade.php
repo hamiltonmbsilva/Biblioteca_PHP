@@ -10,16 +10,24 @@
         <form action="{{route('reserva.store')}}" method="post">
             {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
             {{csrf_field()}}
-            {{--<p class="form-group">--}}
-                {{--<label>Nome do Usuario</label>--}}
-                {{--<input type="text" name="titulo" value="{{old('titulo')}}" class="form-control @if($errors->has('titulo')) is-invalid @endif">--}}
-                {{--@if($errors->has('titulo'))--}}
-                    {{--<span class="invalid-feedback">--}}
-                        {{--<strong>{{$errors->first('titulo')}}</strong>--}}
-                    {{--</span>--}}
 
-                {{--@endif--}}
-            {{--</p>--}}
+            <div class="form-group">
+                <label>Usuario</label>
+
+                <select name="users_id" class="form-control">
+                    //pegar o usuario da seção não selecionar
+                    {{--{{ Auth::user()->name }}--}}
+                    @foreach($user as $u)
+                        <option value="{{$u->id}}"
+                        @if(Auth::user()->id == $u->id)
+                            selected
+                        @endif
+                        >{{$u->name}}</option>
+                        </option>
+                        {{--<option value="{{$u->id}}">{{$u->name}}</option>--}}
+                    @endforeach
+                </select>
+            </div>
 
             <p class="form-group">
                 <label>Data do emprestimo</label>
@@ -31,15 +39,22 @@
                 @endif
             </p>
 
-            {{--<p class="form-group">--}}
-                {{--<label>Nome do livro</label>--}}
-                {{--<input type="text" name="autores" value="{{old('autores')}}" class="form-control @if($errors->has('autores')) is-invalid @endif">--}}
-                {{--@if($errors->has('autores'))--}}
-                    {{--<span class="invalid-feedback">--}}
-                        {{--<strong>{{$errors->first('autores')}}</strong>--}}
-                    {{--</span>--}}
-                {{--@endif--}}
-            {{--</p>--}}
+            <div class="form-group">
+                <label>Livros</label>
+                <select name="" class="form-control">
+                    @foreach($exemplar as $e )
+                        @foreach($livro as $l)
+                            <option value="{{$e->id}}"
+                                    @if($e->livros_id ==$l->id)
+
+
+                            >{{$l->titulo}}</option>
+                            @endif
+                            {{--<option value="{{$e->id}}">{{$e->livros_id}}</option>--}}
+                         @endforeach
+                    @endforeach
+                </select>
+            </div>
 
             <p class="form-group">
                 <label>Data da Devolução</label>

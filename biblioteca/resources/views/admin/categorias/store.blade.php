@@ -31,6 +31,15 @@
                 @endif
             </p>
 
+            <div class="form-group">
+                <label>Livros</label>
+                <select name="livros_id" class="form-control">
+                    @foreach($livro as $l)
+                        <option value="{{$l->id}}">{{$l->titulo}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <p class="form-group">
                 <label>Descrição</label>
                 <input type="text" name="descricao" value="{{old('descricao')}}" class="form-control @if($errors->has('descricao')) is-invalid @endif">

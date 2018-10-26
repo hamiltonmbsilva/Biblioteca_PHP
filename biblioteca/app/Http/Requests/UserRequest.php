@@ -41,7 +41,7 @@ class UserRequest extends FormRequest
             'name.required' => 'Campo nome é obrigatorio',
             'email.required' => 'Campo email é obrigatorio',
             'password.required' => 'Campo senha é obrigatorio',
-            'idade.required' => 'Campo idade é obrigatorio',
+           'idade.required' => 'Campo idade é obrigatorio',
             'cpf.required' => 'Campo CPF é obrigatorio',
             'rg.required' => 'Campo RG é obrigatorio',
             '*min' => 'Quantidade minima de caracteres e 5.'

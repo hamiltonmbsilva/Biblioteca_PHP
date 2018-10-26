@@ -10,8 +10,17 @@ class Exemplares extends Model
 
     protected $fillable = [
 
-        'codigo', 'circular', 'ano',
+        'codigo', 'circular', 'ano','livros_id',
     ];
 
+    //Estou falando que meu emxemplar tem um livro na ligação  com o banco
+    public function livro(){
 
+        return $this->belongsTo(Livro::class, 'livros_id');
+    }
+
+    public function reserva(){
+
+        return $this->belongsTo(Reserva::class, 'reservas_id');
+    }
 }

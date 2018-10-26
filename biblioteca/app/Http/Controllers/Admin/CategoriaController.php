@@ -4,19 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\categoria;
 use App\Http\Requests\CategoriaRequest;
+use App\Livro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CategoriaController extends Controller
 {
     public function index(){
-
+        $livro = Livro::all(['id', 'titulo']);
         $categoria = Categoria::all();
-        return view('admin.categorias.index', compact('categoria'));
+        return view('admin.categorias.index', compact('categoria','livro'));
     }
 
     public function new(){
-        return view('admin.categorias.store');
+        $livro = Livro::all(['id', 'titulo']);
+        return view('admin.categorias.store', compact('livro'));
     }
 
     //função para gravar um restaurante
@@ -29,14 +31,18 @@ class CategoriaController extends Controller
         $categoria = new Categoria();
         $categoria->create($categoriaData);
 
+//        $livro = Livro::find($categoriaData['categorias_id']);
+//
+//        $livro->categoria()->create($categoriaData);
+
         flash('Categoria cadastrada com sucesso!')->success();
         return redirect()->route('categoria.index');
     }
 
     //função para editar um restaurante
     public  function edit(Categoria $categoria){
-
-        return view('admin.categorias.edit', compact('categoria'));
+        $livro = Livro::all(['id', 'titulo']);
+        return view('admin.categorias.edit', compact('categoria','livro'));
     }
 
     public function update(CategoriaRequest $request, $id){

@@ -79,6 +79,20 @@
                 @endif
             </p>
 
+            <div class="form-group">
+                <label>Livros</label>
+                <select name="categorias_id" class="form-control">
+                    @foreach($categoria as $c)
+                        <option value="{{$c->id}}"
+                                @if($livro->categorias_id == $c->id)
+                                selected
+                            @endif
+                        >{{$c->nome}}</option>
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
 
 
             <input type="submit" value="Atualizar" class="btn btn-success btn-lg">

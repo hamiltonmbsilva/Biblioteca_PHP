@@ -12,4 +12,10 @@ class categoria extends Model
 
         'nome', 'descricao', 'assunto',
     ];
+
+    //Estou falando que minha categoria  tem Varios livros ligação com o banco
+    public function livros(){
+
+        return $this->hasMany(Livro::class);
+    }
 }
