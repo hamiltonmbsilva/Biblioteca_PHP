@@ -22,9 +22,33 @@
             @foreach($reserva as $r)
                 <tr>
                     <td>{{$r->id}}</td>
-                    <td></td>
+                    <td>
+                        @foreach($user as $u)
+                            <option value="{{$u->id}}"
+                                    @if($r->users_id == $u->id)
+                                    selected>{{$u->name}}
+                                @endif
+                            </option>
+
+
+                        @endforeach
+                    </td>
                     <td>{{$r->dataEmprestimo}}</td>
-                    <td></td>
+                    <td>
+                        @foreach($exemplar as $e )
+                            @foreach($livro as $l)
+                                @foreach($reserva as $r)
+                                    <option value="{{$e->id}}"
+                                    @if(($e->livros_id == $l->id)&&($r->exemplares_id == $e->id) ))
+
+                                        >{{$l->titulo}}</option>
+                                    @endif
+                                    {{--<option value="{{$e->id}}">{{$e->livros_id}}</option>--}}
+                                 @endforeach
+                            @endforeach
+                        @endforeach
+
+                    </td>
                     <td>{{$r->dataDevolucao}}</td>
                     <td>
                         <a href="{{route('reserva.edit', ['reserva'=> $r->id])}}" class="btn btn-primary">Editar</a>

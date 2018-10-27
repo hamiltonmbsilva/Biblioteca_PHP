@@ -11,20 +11,19 @@
             {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
             {{csrf_field()}}
 
-            <div class="form-group">
-                <label>Usuario</label>
+            {{--<p class="form-group">--}}
+                {{--<label>Usuario</label>--}}
+                {{--<input type="text" name="users_id" value="{{Auth::user()->name}}" class="form-control ">--}}
 
+            {{--</p>--}}
+
+            <div class="form-group">
+                <label>Categoria</label>
                 <select name="users_id" class="form-control">
-                    //pegar o usuario da seção não selecionar
-                    {{--{{ Auth::user()->name }}--}}
                     @foreach($user as $u)
-                        <option value="{{$u->id}}"
                         @if(Auth::user()->id == $u->id)
-                            selected
+                        <option value="{{$u->id}}">{{$u->name}}</option>
                         @endif
-                        >{{$u->name}}</option>
-                        </option>
-                        {{--<option value="{{$u->id}}">{{$u->name}}</option>--}}
                     @endforeach
                 </select>
             </div>
@@ -41,17 +40,13 @@
 
             <div class="form-group">
                 <label>Livros</label>
-                <select name="" class="form-control">
+                <select name="exemplar" class="form-control">
                     @foreach($exemplar as $e )
                         @foreach($livro as $l)
-                            <option value="{{$e->id}}"
-                                    @if($e->livros_id ==$l->id)
-
-
-                            >{{$l->titulo}}</option>
+                            @if($e->livros_id == $l->id)
+                                <option value="{{$e->id}}">{{$l->titulo}}</option>
                             @endif
-                            {{--<option value="{{$e->id}}">{{$e->livros_id}}</option>--}}
-                         @endforeach
+                        @endforeach
                     @endforeach
                 </select>
             </div>

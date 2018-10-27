@@ -23,6 +23,6 @@ class Reserva extends Model
 
     public function exemplares(){
 
-        return $this->hasMany(Exemplares::class);
+        return $this->belongsToMany(Exemplares::class,'reservas_has_exemplares','reservas_id','exemplares_id')->withTimestamps();
     }
 }

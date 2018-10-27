@@ -10,7 +10,7 @@ class Exemplares extends Model
 
     protected $fillable = [
 
-        'codigo', 'circular', 'ano','livros_id',
+        'codigo', 'circular', 'ano','livros_id','reservas_id',
     ];
 
     //Estou falando que meu emxemplar tem um livro na ligação  com o banco
@@ -19,8 +19,8 @@ class Exemplares extends Model
         return $this->belongsTo(Livro::class, 'livros_id');
     }
 
-    public function reserva(){
+    public function reservas(){
 
-        return $this->belongsTo(Reserva::class, 'reservas_id');
+        return $this->belongsToMany(Reserva::class,'reservas_has_exemplares','exemplares_id','reservas_id')->withTimestamps();
     }
 }

@@ -16,6 +16,7 @@ class ReservaController extends Controller
         $user = User::all(['id', 'name']);
         $exemplar = Exemplares::all(['id', 'livros_id']);
         $livro = Livro::all(['id','titulo']);
+
         $reserva = Reserva::all();
         return view('admin.reservas.index', compact('reserva', 'user','exemplar', 'livro'));
     }
@@ -23,8 +24,8 @@ class ReservaController extends Controller
     public function new(){
 
         $user = User::all(['id', 'name']);
-        $livro = Livro::all(['id','titulo']);
-        $exemplar = Exemplares::all(['id', 'livros_id']);
+        $livro = Livro::all();
+        $exemplar = Exemplares::all();
 
         return view('admin.reservas.store', compact('user','exemplar','livro'));
     }
@@ -32,28 +33,30 @@ class ReservaController extends Controller
     //função para gravar um restaurante
     public function store(ReservaRequest $request){
 
-
+        $user = User::all(['id', 'name']);
+        $exemplar =Exemplares::all();
         $reservaData = $request->all();
-
-        $request->validated();
 //
-//        $reserva = new Reserva();
-//        $reserva->create($reservaData);
+        $request->validated();
 
-        $user = User::find($reservaData['users_id']);
 
-        $user->reservas()->create($reservaData);
+        $reserva = Reserva::create($request->all());
+
+        $reserva->exemplares()->attach(request('exemplar'));
+//       dd($reserva);
+
 
         flash('Reserva cadastrado com sucesso!')->success();
-        return redirect()->route('reserva.index');
+        return redirect()->route('reserva.index',compact('user','exemplar','livro'));
     }
 
     //função para editar um restaurante
     public  function edit(Reserva $reserva){
         $user = User::all(['id', 'name']);
         $exemplar = Exemplares::all(['id', 'livros_id']);
+        $livro = Livro::all(['id','titulo']);
 
-        return view('admin.reservas.edit', compact('reserva','user', 'exemplar'));
+        return view('admin.reservas.edit', compact('reserva','user', 'exemplar','livro'));
     }
 
     public function update(ReservaRequest $request, $id){
