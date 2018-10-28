@@ -12,7 +12,7 @@ class CategoriaController extends Controller
 {
     public function index(){
         $livro = Livro::all(['id', 'titulo']);
-        $categoria = Categoria::all();
+        $categoria = Categoria::paginate(5);
         return view('admin.categorias.index', compact('categoria','livro'));
     }
 

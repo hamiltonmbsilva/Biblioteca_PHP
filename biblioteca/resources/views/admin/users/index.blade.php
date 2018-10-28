@@ -13,6 +13,7 @@
                 <th>#</th>
                 <th>Nome</th>
                 <th>Criado em</th>
+                <th>Tipo de Usuario</th>
                 <th>Ações</th>
             </tr>
 
@@ -24,6 +25,13 @@
                     <td>{{$u->name}}</td>
                     <td>{{$u->created_at}}</td>
                     <td>
+                        @foreach($tipo as $t)
+                            @if($u->tipos_id == $t->id)
+                                <option value="{{$t->id}}">{{$t->tipo}}</option>
+                            @endif
+                        @endforeach
+
+                    <td>
                         <a href="{{route('user.edit', ['users'=> $u->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('user.remove', ['id'=> $u->id])}}" class="btn btn-danger">Excluir</a>
                     </td>
@@ -31,6 +39,6 @@
             @endforeach
             </tbody>
         </table>
-
+        {{$users->links()}}
     </div>
 @endsection

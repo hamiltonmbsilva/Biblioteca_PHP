@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     protected $fillable = [
 
-        'name', 'email', 'password', 'idade','cpf','rg',
+        'name', 'email', 'password', 'idade','cpf','rg','tipos_id',
 
 
     ];
@@ -35,6 +35,13 @@ class User extends Authenticatable
 
     public function reservas(){
 
-        return $this->hasMany(Reserva::class);
+        return $this->hasMany(Reserva::class,'users_id');
+    }
+
+
+
+    public function tipo(){
+
+        return $this->belongsTo(User::class);
     }
 }

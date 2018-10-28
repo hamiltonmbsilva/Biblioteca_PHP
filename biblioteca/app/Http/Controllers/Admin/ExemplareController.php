@@ -12,7 +12,7 @@ class ExemplareController extends Controller
 {
     public function index(){
         $livro = Livro::all(['id', 'titulo']);
-        $exemplar = Exemplares::all();
+        $exemplar = Exemplares::paginate(5);
 
         return view('admin.exemplares.index', compact('exemplar','livro'));
     }

@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('new', 'ReservaController@new')->name('reserva.new');
             Route::post('store', 'ReservaController@store')->name('reserva.store');
             Route::get('edit/{reserva}', 'ReservaController@edit')->name('reserva.edit');
+            Route::get('exibir/{reserva}', 'ReservaController@exibir')->name('reserva.exibir');
             Route::post('update/{id}', 'ReservaController@update')->name('reserva.update');
             Route::get('remove/{id}', 'ReservaController@delete')->name('reserva.remove');
 

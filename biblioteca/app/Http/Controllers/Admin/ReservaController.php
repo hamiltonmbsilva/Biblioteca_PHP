@@ -9,6 +9,7 @@ use App\Reserva;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ReservaController extends Controller
 {
@@ -17,8 +18,9 @@ class ReservaController extends Controller
         $exemplar = Exemplares::all(['id', 'livros_id']);
         $livro = Livro::all(['id','titulo']);
 
-        $reserva = Reserva::all();
-        return view('admin.reservas.index', compact('reserva', 'user','exemplar', 'livro'));
+        $pagina = Reserva::paginate(5);
+        $reserva = Auth::user()->reservas;
+        return view('admin.reservas.index', compact('reserva', 'user','exemplar', 'livro', 'pagina'));
     }
 
     public function new(){
@@ -57,6 +59,14 @@ class ReservaController extends Controller
         $livro = Livro::all(['id','titulo']);
 
         return view('admin.reservas.edit', compact('reserva','user', 'exemplar','livro'));
+    }
+
+    public  function exibir(Reserva $reserva){
+        $user = User::all(['id', 'name']);
+        $exemplar = Exemplares::all(['id', 'livros_id']);
+        $livro = Livro::all(['id','titulo']);
+
+        return view('admin.reservas.consulta', compact('reserva','user', 'exemplar','livro'));
     }
 
     public function update(ReservaRequest $request, $id){

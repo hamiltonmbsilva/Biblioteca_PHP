@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Requests\UserRequest;
+use App\Tipo;
 use App\User;
 use App\Http\Controllers\Controller;
 
@@ -11,13 +12,15 @@ class UserController extends Controller
 {
     public function index(){
 
-        $users = User::all();
-        return view('admin.users.index', compact('users'));
+
+        $users = User::paginate(5);
+        $tipo = Tipo::all();
+        return view('admin.users.index', compact('users','tipo'));
     }
 
     public function new(){
-
-        return view('admin.users.store');
+        $tipo = Tipo::all();
+        return view('admin.users.store',compact('tipo'));
     }
 
 
@@ -33,21 +36,15 @@ class UserController extends Controller
 
         $user->create($userData);
 
-//        User::create([
-//            'name' => $data['name'],
-//            'email' => $data['email'],
-//            'password' => Hash::make($data['password']),
-//        ]);
-
-
         flash('Usuario criado com sucesso!')->success();
         return redirect()->route('user.index');
     }
 
     //função para editar um restaurante
     public  function edit(User $user){
+        $tipo = Tipo::all();
 
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user','tipo'));
     }
 
     public function update(UserRequest $request, $id){

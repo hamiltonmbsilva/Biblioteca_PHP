@@ -45,6 +45,6 @@
             @endforeach
             </tbody>
         </table>
-
+        {{$livro->links()}}
     </div>
 @endsection

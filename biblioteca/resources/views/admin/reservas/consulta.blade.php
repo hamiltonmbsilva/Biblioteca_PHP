@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <h1>Editar Reserva</h1>
+        <h1>Consulta Reserva</h1>
 
 
         <form action="{{route('reserva.update', ['reservas'=> $reserva->id])}}" method="post">
@@ -12,13 +12,13 @@
 
             <div class="form-group">
                 <label>Nome do Usuario</label>
-                <select name="users_id" class="form-control">
+                <p name="users_id" class="form-control">
                     @foreach($user as $u)
                         @if(Auth::user()->id == $u->id)
                             <option value="{{$u->id}}">{{$u->name}}</option>
                         @endif
                     @endforeach
-                </select>
+                </p>
             </div>
 
             <p class="form-group">
@@ -33,7 +33,7 @@
 
             <div class="form-group">
                 <label>Livros</label>
-                <select name="exemplar" class="form-control">
+                <p name="exemplar" class="form-control">
                     @foreach($exemplar as $e )
                         @foreach($livro as $l)
                             @if($e->livros_id == $l->id)
@@ -41,7 +41,7 @@
                             @endif
                         @endforeach
                     @endforeach
-                </select>
+                </p>
             </div>
 
             <p class="form-group">
@@ -54,10 +54,6 @@
                 @endif
             </p>
 
-
-
-
-            <input type="submit" value="Atualizar" class="btn btn-success btn-lg">
 
         </form>
 

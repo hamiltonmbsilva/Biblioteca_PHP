@@ -36,6 +36,6 @@
             @endforeach
             </tbody>
         </table>
-
+        {{$exemplar->links()}}
     </div>
 @endsection

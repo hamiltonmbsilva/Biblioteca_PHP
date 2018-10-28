@@ -12,7 +12,8 @@ class LivroController extends Controller
 {
     public function index(){
         $categoria = Categoria::all(['id', 'nome']);
-        $livro = Livro::all();
+
+        $livro = Livro::paginate(5);
         return view('admin.livros.index', compact('livro','categoria'));
     }
 
