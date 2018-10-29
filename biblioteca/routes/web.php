@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth']], function (){
             Route::post('update/{id}', 'UserController@update')->name('user.update');
             Route::get('remove/{id}', 'UserController@delete')->name('user.remove');
 
+            Route::get('/fotos/{id}','FotoController@index')->name('user.foto');
+            Route::post('/fotos/{id}','FotoController@save')->name('user.foto.save');
+
         });
 
 
@@ -49,6 +52,9 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{livro}', 'LivroController@edit')->name('livro.edit');
             Route::post('update/{id}', 'LivroController@update')->name('livro.update');
             Route::get('remove/{id}', 'LivroController@delete')->name('livro.remove');
+
+           Route::get('/capas/{id}','FotoLivroController@index')->name('livro.capa');
+           Route::post('/capas/{id}','FotoLivroController@save')->name('livro.capa.save');
 
         });
 

@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     protected $fillable = [
 
-        'name', 'email', 'password', 'idade','cpf','rg','tipos_id',
+        'name', 'email', 'password', 'idade','cpf','rg','tipos_id','fotos_id',
 
 
     ];
@@ -43,5 +43,10 @@ class User extends Authenticatable
     public function tipo(){
 
         return $this->belongsTo(User::class);
+    }
+
+    public function fotos()
+    {
+        return $this->hasMany(Foto::class,'users_id');
     }
 }

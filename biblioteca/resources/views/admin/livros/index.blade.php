@@ -11,6 +11,7 @@
 
             <tr>
                 <th>#</th>
+                <th>Capa</th>
                 <th>Titulo</th>
                 <th>Autores</th>
                 <th>Ano</th>
@@ -24,6 +25,11 @@
             @foreach($livro as $l)
                 <tr>
                     <td>{{$l->id}}</td>
+                    <td>
+                        @if($l->capas()->count())
+                            <img src="{{asset('/imagem/' . $l->capas()->first()->capa)}}" alt="" class="img-fluid" width="50px">
+                        @endif
+                    </td>
                     <td>{{$l->titulo}}</td>
                     <td>{{$l->autores}}</td>
                     <td>{{$l->ano}}</td>
@@ -40,6 +46,7 @@
                     <td>
                         <a href="{{route('livro.edit', ['livro'=> $l->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('livro.remove', ['id'=> $l->id])}}" class="btn btn-danger">Excluir</a>
+                        <a href="{{route('livro.capa', ['id'=> $l->id])}}" class="btn btn-warning">Fotos</a>
                     </td>
                 </tr>
             @endforeach

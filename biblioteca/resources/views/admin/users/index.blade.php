@@ -11,6 +11,7 @@
 
             <tr>
                 <th>#</th>
+                <th>Foto</th>
                 <th>Nome</th>
                 <th>Criado em</th>
                 <th>Tipo de Usuario</th>
@@ -22,6 +23,12 @@
             @foreach($users as $u)
                 <tr>
                     <td>{{$u->id}}</td>
+                    {{--{{dd($u->fotos())}}--}}
+                    <td>
+                        @if($u->fotos()->count())
+                        <img src="{{asset('/imagem/' . $u->fotos()->first()->foto)}}" alt="" class="img-fluid" width="50px">
+                        @endif
+                    </td>
                     <td>{{$u->name}}</td>
                     <td>{{$u->created_at}}</td>
                     <td>
@@ -34,6 +41,7 @@
                     <td>
                         <a href="{{route('user.edit', ['users'=> $u->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('user.remove', ['id'=> $u->id])}}" class="btn btn-danger">Excluir</a>
+                        <a href="{{route('user.foto', ['id'=> $u->id])}}" class="btn btn-warning">Fotos</a>
                     </td>
                 </tr>
             @endforeach

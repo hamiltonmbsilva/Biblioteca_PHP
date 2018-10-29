@@ -15,21 +15,23 @@
                 <p name="users_id" class="form-control">
                     @foreach($user as $u)
                         @if(Auth::user()->id == $u->id)
-                            <option value="{{$u->id}}">{{$u->name}}</option>
+                            {{$u->name}}
                         @endif
                     @endforeach
                 </p>
             </div>
 
-            <p class="form-group">
+            <div class="form-group">
                 <label>Data do emprestimo</label>
-                <input type="date" name="dataEmprestimo" value="{{$reserva->dataEmprestimo}}" class="form-control @if($errors->has('dataEmprestimo')) is-invalid @endif">
+
+                <p class="form-control">{{$reserva->dataEmprestimo}}</p>
+                {{--<input type="date" name="dataEmprestimo" value="{{$reserva->dataEmprestimo}}" class="form-control @if($errors->has('dataEmprestimo')) is-invalid @endif">--}}
                 @if($errors->has('dataEmprestimo'))
                     <span class="invalid-feedback">
                        <strong>{{$errors->first('dataEmprestimo')}}</strong>
                     </span>
                 @endif
-            </p>
+            </div>
 
             <div class="form-group">
                 <label>Livros</label>
@@ -37,7 +39,8 @@
                     @foreach($exemplar as $e )
                         @foreach($livro as $l)
                             @if($e->livros_id == $l->id)
-                                <option value="{{$e->id}}">{{$l->titulo}}</option>
+                                {{$l->titulo}}
+                                {{--<option value="{{$e->id}}"></option>--}}
                             @endif
                         @endforeach
                     @endforeach
@@ -46,7 +49,8 @@
 
             <p class="form-group">
                 <label>Data da devolução</label>
-                <input type="date" name="dataDevolucao" value="{{$reserva->dataDevolucao}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">
+            <p class="form-control">{{$reserva->dataDevolucao}}</p>
+                {{--<input type="date" name="dataDevolucao" value="{{$reserva->dataDevolucao}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">--}}
                 @if($errors->has('dataDevolucao'))
                     <span class="invalid-feedback">
                        <strong>{{$errors->first('dataDevolucao')}}</strong>

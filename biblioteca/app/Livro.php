@@ -24,4 +24,10 @@ class Livro extends Model
 
         return $this->belongsTo(Categoria::class);
     }
+
+    public function capas()
+    {
+        return $this->hasMany(Capa::class,'livros_id');
+
+    }
 }
