@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ArquivoPDF;
 use App\categoria;
 use App\Http\Requests\LivroRequest;
 use App\Livro;
@@ -12,34 +13,44 @@ class LivroController extends Controller
 {
     public function index(){
         $categoria = Categoria::all(['id', 'nome']);
-
+        $id = Livro::with('id');
         $livro = Livro::paginate(5);
-        return view('admin.livros.index', compact('livro','categoria'));
+        return view('admin.livros.index', compact('livro','categoria', 'id'));
     }
 
     public function new(){
         $categoria = Categoria::all(['id', 'nome']);
-
-        return view('admin.livros.store',compact('categoria'));
+       // $pdf = ArquivoPDF::with('id');;
+        $livro_id = Livro::all(['id']);
+        //dd($livro_id);
+        return view('admin.livros.store',compact('categoria', 'livro_id','pdf'));
     }
 
     //função para gravar um restaurante
     public function store(LivroRequest $request){
 
+        $path = $request->file('arquivo')->store('Arquivos','public');
 
         $livroData = $request->all();
 
         $request->validated();
 
-//        $livro = new Livro();
-//        $livro->create($livroData);
+         //Define o valor default para a variável que contém o nome da imagem
+       //$nameFile = null;
 
         $categoria = Categoria::find($livroData['categorias_id']);
+        $livro = $categoria->livros()->create($livroData);
 
+        //dd($livro);
 
-        $categoria->livros()->create($livroData);
+        $post = new ArquivoPDF();
+        $post->pdf = $path;
 
+        //$post->create($request->all($livro->id));
+        $post->livros_id= $livro->id;
 
+        //dd($post);
+        $post->save();
         flash('Livro cadastrado com sucesso!')->success();
         return redirect()->route('livro.index',compact('categoria'));
     }

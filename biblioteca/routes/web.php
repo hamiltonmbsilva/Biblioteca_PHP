@@ -53,8 +53,11 @@ Route::group(['middleware' => ['auth']], function (){
             Route::post('update/{id}', 'LivroController@update')->name('livro.update');
             Route::get('remove/{id}', 'LivroController@delete')->name('livro.remove');
 
-           Route::get('/capas/{id}','FotoLivroController@index')->name('livro.capa');
-           Route::post('/capas/{id}','FotoLivroController@save')->name('livro.capa.save');
+            Route::get('/capas/{id}','FotoLivroController@index')->name('livro.capa');
+            Route::post('/capas/{id}','FotoLivroController@save')->name('livro.capa.save');
+
+            Route::get('/pdfs/{id}','ArquivoPDFController@index')->name('livro.pdf');
+            Route::post('/pdfs/{id}','ArquivoPDFController@save')->name('livro.pdf.save');
 
         });
 

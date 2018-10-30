@@ -6,6 +6,7 @@
         <h1 class="float-left">Livros</h1>
         <a href="{{route('livro.new')}}" class="float-right btn btn-success">Novo</a>
 
+
         <table class="table table-striped">
             <thead>
 
@@ -47,6 +48,8 @@
                         <a href="{{route('livro.edit', ['livro'=> $l->id])}}" class="btn btn-primary">Editar</a>
                         <a href="{{route('livro.remove', ['id'=> $l->id])}}" class="btn btn-danger">Excluir</a>
                         <a href="{{route('livro.capa', ['id'=> $l->id])}}" class="btn btn-warning">Fotos</a>
+
+
                     </td>
                 </tr>
             @endforeach

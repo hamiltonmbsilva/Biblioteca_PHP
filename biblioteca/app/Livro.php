@@ -10,7 +10,7 @@ class Livro extends Model
 
     protected $fillable = [
 
-        'titulo', 'ISBN', 'autores','edicao', 'editora', 'ano', 'assuntos','categorias_id',
+        'titulo', 'ISBN', 'autores','edicao', 'editora', 'ano', 'assuntos','categorias_id','ehtipo',
     ];
 
     //Estou falando que meu Livro tem Vario Exemplares ligação com o banco
@@ -28,6 +28,12 @@ class Livro extends Model
     public function capas()
     {
         return $this->hasMany(Capa::class,'livros_id');
+
+    }
+
+    public function pdfs()
+    {
+        return $this->hasMany(ArquivoPDF::class,'livros_id');
 
     }
 }

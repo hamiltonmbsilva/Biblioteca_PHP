@@ -7,7 +7,7 @@
         <h1>Cadastro de livros</h1>
 
 
-        <form action="{{route('livro.store')}}" method="post">
+        <form action="{{route('livro.store')}}" method="post" enctype="multipart/form-data" >
             {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
             {{csrf_field()}}
             <p class="form-group">
@@ -80,6 +80,37 @@
                     </span>
                 @endif
             </p>
+
+            <p class="form-group">
+                <label>Tipo de livro</label>
+
+                <select name="ehtipo" class="form-control">
+                        <option value="1">Livro Físico</option>
+                        <option value="0">Livro Digital</option>
+                </select>
+
+                @if($errors->has('ehtipo'))
+                    <span class="invalid-feedback">
+                        <strong>{{$errors->first('ehtipo')}}</strong>
+                    </span>
+                @endif
+            </p>
+
+
+            <p class="form-group" enctype="multipart/form-data">
+                <label>Upload do Livro</label>
+
+                <div action="" enctype="multipart/form-data" >
+
+
+                        <div class="form-group">
+                            <label for="">Carregar Livros</label>
+                            <input type="file" name="arquivo" multiple/>
+                        </div>
+
+                </div>
+            </p>
+
 
             <div class="form-group">
                 <label>Categoria</label>
