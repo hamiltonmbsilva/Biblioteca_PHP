@@ -95,6 +95,18 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
+        Route::prefix('emprestimos')->group(function () {
+
+            Route::get('/', 'EmprestimoController@index')->name('emprestimo.index');
+            Route::get('new', 'EmprestimoController@new')->name('emprestimo.new');
+            Route::post('store', 'EmprestimoController@store')->name('emprestimo.store');
+            Route::get('edit/{emprestimo}', 'EmprestimoController@edit')->name('emprestimo.edit');
+            Route::get('exibir/{emprestimo}', 'EmprestimoController@exibir')->name('emprestimo.exibir');
+            Route::post('update/{id}', 'EmprestimoController@update')->name('emprestimo.update');
+            Route::get('remove/{id}', 'EmprestimoController@delete')->name('emprestimo.remove');
+
+        });
+
         Route::prefix('enderecos')->group(function () {
 
             Route::get('/', 'EnderecoController@index')->name('endereco.index');

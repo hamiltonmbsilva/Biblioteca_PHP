@@ -19,15 +19,32 @@
                 @endif
             </p>
 
+
+
             <p class="form-group">
                 <label>Circular</label>
-                <input type="text" name="circular" value="{{$exemplar->circular}}" class="form-control @if($errors->has('circular')) is-invalid @endif">
+
+                <select name="circular" class="form-control @if($errors->has('circular')) is-invalid @endif">
+                    <option value="1">Circular</option>
+                    <option value="0">Não é Circular</option>
+                </select>
+
                 @if($errors->has('circular'))
                     <span class="invalid-feedback">
-                       <strong>{{$errors->first('circular')}}</strong>
+                        <strong>{{$errors->first('circular')}}</strong>
                     </span>
                 @endif
             </p>
+
+            {{--<p class="form-group">--}}
+                {{--<label>Circular</label>--}}
+                {{--<input type="text" name="circular" value="{{$exemplar->circular}}" class="form-control @if($errors->has('circular')) is-invalid @endif">--}}
+                {{--@if($errors->has('circular'))--}}
+                    {{--<span class="invalid-feedback">--}}
+                       {{--<strong>{{$errors->first('circular')}}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</p>--}}
 
             <div class="form-group">
                 <label>Livros</label>

@@ -32,6 +32,21 @@
                 </select>
             </div>
 
+            <p class="form-group">
+                <label>Circular</label>
+
+                <select name="circular" class="form-control">
+                    <option value="1">Circular</option>
+                    <option value="0">Não é Circular</option>
+                </select>
+
+                @if($errors->has('circular'))
+                    <span class="invalid-feedback">
+                        <strong>{{$errors->first('circular')}}</strong>
+                    </span>
+                @endif
+            </p>
+
 
 
             <p class="form-group">
@@ -40,6 +55,16 @@
                 @if($errors->has('ano'))
                     <span class="invalid-feedback">
                         <strong>{{$errors->first('ano')}}</strong>
+                    </span>
+                @endif
+            </p>
+
+            <p class="form-group">
+                <label>Quantidade</label>
+                <input type="number" name="qtda" value="{{old('qtda')}}" class="form-control @if($errors->has('qtda')) is-invalid @endif">
+                @if($errors->has('qtda'))
+                    <span class="invalid-feedback">
+                        <strong>{{$errors->first('qtda')}}</strong>
                     </span>
                 @endif
             </p>

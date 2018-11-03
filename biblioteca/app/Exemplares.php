@@ -10,7 +10,7 @@ class Exemplares extends Model
 
     protected $fillable = [
 
-        'codigo', 'circular', 'ano','livros_id','reservas_id',
+        'codigo', 'circular', 'ano','livros_id','reservas_id','qtda',
     ];
 
     //Estou falando que meu emxemplar tem um livro na ligação  com o banco
@@ -22,5 +22,10 @@ class Exemplares extends Model
     public function reservas(){
 
         return $this->belongsToMany(Reserva::class,'reservas_has_exemplares','exemplares_id','reservas_id')->withTimestamps();
+    }
+
+    public function emprestimos(){
+
+        return $this->belongsToMany(Emprestimo::class,'emprestimo_has_exemplares','exemplares_id','emprestimo_id')->withTimestamps();
     }
 }

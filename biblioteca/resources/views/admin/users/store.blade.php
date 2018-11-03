@@ -2,9 +2,12 @@
 
 @section('content')
 
-    <div class="container">
 
-        <h1>Cadastro de Usuario</h1>
+    <div class="box box-danger">
+
+            <div class="box-header">
+                <h1 class="box-success">Cadastro de Usuario</h1>
+            </div>
 
 
         <form action="{{route('user.store')}}" method="post">
@@ -40,6 +43,7 @@
                     </span>
                 @endif
             </p>
+
 
             <p class="form-group">
                 <label>CPF</label>
@@ -82,6 +86,7 @@
                 @endif
             </p>
 
+
             <p class="form-group">
                 <label>Confirmar Senha</label>
                 <input type="password" name="password_confirmation" value="{{old('password_confirmation')}}" class="form-control @if($errors->has('password_confirmation')) is-invalid @endif">
@@ -97,6 +102,7 @@
             <input type="submit" value="Cadastrar" class="btn btn-success btn-lg">
 
         </form>
+
 
     </div>
 

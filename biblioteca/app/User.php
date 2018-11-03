@@ -38,7 +38,10 @@ class User extends Authenticatable
         return $this->hasMany(Reserva::class,'users_id');
     }
 
+    public function emprestimos(){
 
+        return $this->hasMany(Emprestimo::class,'users_id');
+    }
 
     public function tipo(){
 

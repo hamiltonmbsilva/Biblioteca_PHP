@@ -24,9 +24,10 @@ class ExemplarRequest extends FormRequest
     public function rules()
     {
         return [
-            'codigo'=> 'required|min:5',
-//        'circular'=> 'required|min:5',
-            'ano'=> 'required|min:4'
+            'codigo'=> 'required|min:1',
+//            'circular'=> 'required|min:5',
+            'ano'=> 'required|min:4',
+            'qtda'=>'required|min:1'
 
         ];
     }
@@ -37,7 +38,7 @@ class ExemplarRequest extends FormRequest
             'codigo.required' => 'Campo Codigo é obrigatorio',
 //            'circular.required' => 'Campo Circular é obrigatorio',
             'ano.required' => 'Campo Ano é obrigatorio',
-
+            'qtda.required' => 'Campo quantidade é obrigatorio',
             '*min' => 'Quantidade minima de caracteres e 5.'
         ];
     }

@@ -41,34 +41,14 @@
                                     <small>Membro desde {{ Auth::user()->created_at }}</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </li>
+
+
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
-                                {{--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-                                    {{--<a class="dropdown-item" href="{{ route('logout') }}"--}}
-                                       {{--onclick="event.preventDefault();--}}
-                                          {{--document.getElementById('logout-form').submit();">--}}
-                                        {{--{{ __('Logout') }}--}}
-                                    {{--</a>--}}
 
-                                    {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-                                        {{--@csrf--}}
-                                    {{--</form>--}}
-                                {{--</div>--}}
                                 <div class="pull-right">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -96,7 +76,7 @@
                     <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>{{ Auth::user()->name }}</p>
 
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -117,29 +97,38 @@
                 </a>
             </li>
 
+            @if( Auth::user()->tipos_id == 1 || Auth::user()->tipos_id == 2)
             <li>
                 <a href="{{route('user.index')}}" >
                     <i class="fa fa-user"></i> <span>Usuario</span>
                 </a>
             </li>
+            @endif
 
+            @if( Auth::user()->tipos_id == 1 || Auth::user()->tipos_id == 2)
             <li>
                 <a href="{{route('livro.index')}}" >
                     <i class="fa fa-book"></i> <span>Livros</span>
                 </a>
             </li>
+            @endif
 
+            @if( Auth::user()->tipos_id == 1 || Auth::user()->tipos_id == 2)
             <li>
                 <a href="{{route('categoria.index')}}" >
                     <i class="fa fa-share-square-o"></i> <span>Categoria</span>
                 </a>
             </li>
+            @endif
 
+            @if( Auth::user()->tipos_id == 1 || Auth::user()->tipos_id == 2)
             <li>
                 <a href="{{route('exemplar.index')}}" >
                     <i class="fa fa-book"></i> <span>Exemplar</span>
                 </a>
             </li>
+            @endif
+
 
             <li>
                 <a href="{{route('reserva.index')}}" >
@@ -148,16 +137,26 @@
             </li>
 
             <li>
+                <a href="{{route('emprestimo.index')}}" >
+                    <i class="fa fa-book"></i> <span>Emprestimo de Livros</span>
+                </a>
+            </li>
+
+
+            @if( Auth::user()->tipos_id == 3 || Auth::user()->tipos_id == 1)
+            <li>
                 <a href="pages/calendar.html">
                     <i class="fa fa-calendar"></i> <span>Calendar</span>
                     {{--<small class="label pull-right bg-red">3</small>--}}
                 </a>
             </li>
+            @endif
 
             </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
+
     <!-- Right side column. Contains the navbar and content of the page -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -165,6 +164,5 @@
 
         <!-- Main content -->
         <section class="content">
-
 
 

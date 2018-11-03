@@ -32,7 +32,7 @@ class ExemplareController extends Controller
         $request->validated();
 
 
-        $livro = Livro::find($exemplarData['livro_id']);
+        $livro = Livro::find($exemplarData['livros_id']);
 
         $livro->exemplares()->create($exemplarData);
 
