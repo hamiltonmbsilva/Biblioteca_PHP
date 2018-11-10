@@ -22,13 +22,13 @@
             </div>
 
             <div class="form-group">
-                <label>Data do emprestimo</label>
+                <label>Data da Reserva</label>
 
-                <p class="form-control">{{$reserva->dataEmprestimo}}</p>
-                {{--<input type="date" name="dataEmprestimo" value="{{$reserva->dataEmprestimo}}" class="form-control @if($errors->has('dataEmprestimo')) is-invalid @endif">--}}
-                @if($errors->has('dataEmprestimo'))
+                <p class="form-control">{{$reserva->dataReserva}}</p>
+                {{--<input type="date" name="dataReserva" value="{{$reserva->dataReserva}}" class="form-control @if($errors->has('dataReserva')) is-invalid @endif">--}}
+                @if($errors->has('dataReserva'))
                     <span class="invalid-feedback">
-                       <strong>{{$errors->first('dataEmprestimo')}}</strong>
+                       <strong>{{$errors->first('dataReserva')}}</strong>
                     </span>
                 @endif
             </div>
@@ -36,27 +36,25 @@
             <div class="form-group">
                 <label>Livros</label>
                 <p name="exemplar" class="form-control">
-                    @foreach($exemplar as $e )
-                        @foreach($livro as $l)
-                            @if($e->livros_id == $l->id)
-                                {{$l->titulo}}
+                    {{--{{dd($reserva->exemplares("reservas_id") == $reserva->id)}}--}}
+                    @if(($reserva->reservas_id == $reserva->id)&& ($exemplar->id == $exemplar->exemplares_id)&&
+                    ($exemplar->livros_id == $livro->id))
+
+                        $livro->titulo
+                     @endif
+
+                    {{--@foreach($exemplar as $e )--}}
+                        {{--@foreach($livro as $l)--}}
+                            {{--@if($e->livros_id == $l->id)--}}
+                                {{--{{$l->titulo}}--}}
                                 {{--<option value="{{$e->id}}"></option>--}}
-                            @endif
-                        @endforeach
-                    @endforeach
+                            {{--@endif--}}
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </p>
             </div>
 
-            <p class="form-group">
-                <label>Data da devolução</label>
-            <p class="form-control">{{$reserva->dataDevolucao}}</p>
-                {{--<input type="date" name="dataDevolucao" value="{{$reserva->dataDevolucao}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">--}}
-                @if($errors->has('dataDevolucao'))
-                    <span class="invalid-feedback">
-                       <strong>{{$errors->first('dataDevolucao')}}</strong>
-                    </span>
-                @endif
-            </p>
+
 
 
         </form>

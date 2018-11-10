@@ -29,11 +29,11 @@
             </div>
 
             <p class="form-group">
-                <label>Data do emprestimo</label>
-                <input type="date" name="dataEmprestimo" value="{{old('dataEmprestimo')}}" class="form-control @if($errors->has('dataEmprestimo')) is-invalid @endif">
-                @if($errors->has('dataEmprestimo'))
+                <label>Data do Reserva</label>
+                <input type="date" name="dataReserva" value="{{old('dataReserva')}}" class="form-control @if($errors->has('dataReserva')) is-invalid @endif">
+                @if($errors->has('dataReserva'))
                     <span class="invalid-feedback">
-                        <strong>{{$errors->first('dataEmprestimo')}}</strong>
+                        <strong>{{$errors->first('dataReserva')}}</strong>
                     </span>
                 @endif
             </p>
@@ -51,15 +51,15 @@
                 </select>
             </div>
 
-            <p class="form-group">
-                <label>Data da Devolução</label>
-                <input type="date" name="dataDevolucao" value="{{old('dataDevolucao')}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">
-                @if($errors->has('dataDevolucao'))
-                    <span class="invalid-feedback">
-                        <strong>{{$errors->first('dataDevolucao')}}</strong>
-                    </span>
-                @endif
-            </p>
+            {{--<p class="form-group">--}}
+                {{--<label>Data da Devolução</label>--}}
+                {{--<input type="date" name="dataDevolucao" value="{{old('dataDevolucao')}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">--}}
+                {{--@if($errors->has('dataDevolucao'))--}}
+                    {{--<span class="invalid-feedback">--}}
+                        {{--<strong>{{$errors->first('dataDevolucao')}}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</p>--}}
 
 
             {{--<div class="form-group">--}}

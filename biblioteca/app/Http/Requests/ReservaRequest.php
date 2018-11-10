@@ -24,8 +24,8 @@ class ReservaRequest extends FormRequest
     public function rules()
     {
         return [
-            'dataEmprestimo' => 'required|min:8',
-            'dataDevolucao' => 'required|min:8'
+            'dataReserva' => 'required|min:8',
+//            'dataDevolucao' => 'required|min:8'
 
         ];
     }
@@ -33,8 +33,8 @@ class ReservaRequest extends FormRequest
     public function messages()
     {
         return [
-            'dataEmprestimo.required' => 'Campo da Data do Emprestimo é obrigatorio',
-            'dataDevolucao.required' => 'Campo da Data de Devolução é obrigatorio',
+            'dataReserva.required' => 'Campo da Data do Emprestimo é obrigatorio',
+//            'dataDevolucao.required' => 'Campo da Data de Devolução é obrigatorio',
 
             '*min' => 'Quantidade minima de caracteres e 8.'
         ];

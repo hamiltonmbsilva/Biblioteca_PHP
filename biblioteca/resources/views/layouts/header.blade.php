@@ -43,7 +43,7 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link href=" {{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
 
-    <link href="{{ asset('css/style1.css')}}"" rel='stylesheet' type='text/css' media="all" />
+    <link href="{{ asset('css/style1.css')}}" rel='stylesheet' type='text/css' media="all" />
 
     <!-- //template 2 -->
 

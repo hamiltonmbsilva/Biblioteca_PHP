@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\Reserva;
+use App\Emprestimo;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,11 +23,12 @@ class Exemplares extends Model
 
     public function reservas(){
 
-        return $this->belongsToMany(Reserva::class,'reservas_has_exemplares','exemplares_id','reservas_id')->withTimestamps();
+        return $this->belongsToMany(\App\Reserva::class,'reservas_has_exemplares','exemplares_id',
+            'reservas_id')->withTimestamps();
     }
 
     public function emprestimos(){
 
-        return $this->belongsToMany(Emprestimo::class,'emprestimo_has_exemplares','exemplares_id','emprestimo_id')->withTimestamps();
+        return $this->belongsToMany(\App\Emprestimo::class,'emprestimo_has_exemplares','exemplares_id','emprestimos_id')->withTimestamps();
     }
 }

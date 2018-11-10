@@ -17,10 +17,17 @@ class ReservaController extends Controller
         $user = User::all(['id', 'name']);
         $exemplar = Exemplares::all(['id', 'livros_id']);
         $livro = Livro::all(['id','titulo']);
+        $reservas = Reserva::with('exemplares')->get();
 
         $pagina = Reserva::paginate(5);
         $reserva = Auth::user()->reservas;
-        return view('admin.reservas.index', compact('reserva', 'user','exemplar', 'livro', 'pagina'));
+        return view('admin.reservas.index', compact('reserva', 'user','exemplar', 'livro', 'pagina', 'reservas'));
+    }
+
+    private function getReservas(){
+        $teste = Reserva::with('exemplares')->get();
+        //dd($teste);
+       return(compact('teste'));
     }
 
     public function new(){
@@ -29,6 +36,7 @@ class ReservaController extends Controller
         $livro = Livro::all();
         $exemplar = Exemplares::all();
 
+       self::getReservas();
         return view('admin.reservas.store', compact('user','exemplar','livro'));
     }
 

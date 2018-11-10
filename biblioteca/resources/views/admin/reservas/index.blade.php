@@ -12,44 +12,59 @@
             <tr>
                 <th>#</th>
                 <th>Nome do Usuario</th>
-                <th>Data do Emprestimo</th>
+                <th>Data da Reserva</th>
                 <th>Nome do Livro</th>
-                <th>Data de Devolução</th>
+                <th>Quantidade</th>
+
             </tr>
 
             </thead>
             <tbody>
-            @foreach($reserva as $r)
+            {{--@foreach($reserva as $r)--}}
+
+            @foreach( $reservas as $resultado)
+                @foreach(\App\Exemplares::whereHas('reservas', function ($query) use ($resultado){
+                    $query->where('reservas_id', $resultado->id);
+                        })->get() as $res)
+                    {{--{{dd($resultado->dataReserva)}}--}}
+                    <tr>
                 <tr>
-                    <td>{{$r->id}}</td>
-                    <td>{{ Auth::user()->name }}
-                        {{--@foreach($user as $u)--}}
-                            {{--<option value="{{$u->id}}"--}}
-                                    {{--@if($r->users_id == $u->id)--}}
-                                    {{--selected>{{$u->name}}--}}
-                                {{--@endif--}}
-                            {{--</option>--}}
-
-
-                        {{--@endforeach--}}
-                    </td>
-                    <td>{{$r->dataEmprestimo}}</td>
+                    <td>{{$resultado->id}}</td>
                     <td>
-                        @foreach($exemplar as $e )
-                            @foreach($livro as $l)
-                                @foreach($reserva as $r)
-                                    <option value="{{$e->id}}"
-                                    @if(($e->livros_id == $l->id)&&($r->exemplares_id == $e->id) ))
-
-                                        >{{$l->titulo}}</option>
-                                    @endif
-                                    {{--<option value="{{$e->id}}">{{$e->livros_id}}</option>--}}
-                                 @endforeach
-                            @endforeach
-                        @endforeach
+                        {{ Auth::user()->name }}
 
                     </td>
-                    <td>{{$r->dataDevolucao}}</td>
+                    <td>{{$resultado->dataReserva}}</td>
+                    <td>
+                        {{$res->livro->titulo}}
+                        {{--@foreach($exemplar as $e )--}}
+                            {{--@foreach($livro as $l)--}}
+                                {{--@foreach($reserva as $r)--}}
+                                    {{--<option value="{{$e->id}}"--}}
+                                    {{--@if(($e->livros_id == $l->id)&&($r->exemplares_id == $e->id) ))--}}
+
+                                        {{-->{{$l->titulo}}</option>--}}
+                                    {{--@endif--}}
+                                    {{--<option value="{{$e->id}}">{{$e->livros_id}}</option>--}}
+                                 {{--@endforeach--}}
+                            {{--@endforeach--}}
+                        {{--@endforeach--}}
+
+                    </td>
+
+                    <td>
+
+                        @foreach($reserva as $r)
+
+                            @if($reserva == $r->dataReserva)
+                            {{$cont = $contador,
+                                $contador = $cont + 1
+                            }}
+                            @endif
+                        @endforeach
+                        <p>$contador</p>
+                    </td>
+
                     <td>
                         <a href="{{route('reserva.exibir', ['id'=> $r->id])}}" class="btn btn-success">Consultar</a>
                         <a href="{{route('reserva.edit', ['reserva'=> $r->id])}}" class="btn btn-primary">Editar</a>
@@ -57,6 +72,7 @@
 
                     </td>
                 </tr>
+            @endforeach
             @endforeach
             </tbody>
         </table>

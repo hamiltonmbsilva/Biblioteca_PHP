@@ -22,11 +22,11 @@
             </div>
 
             <p class="form-group">
-                <label>Data do emprestimo</label>
-                <input type="date" name="dataEmprestimo" value="{{$reserva->dataEmprestimo}}" class="form-control @if($errors->has('dataEmprestimo')) is-invalid @endif">
-                @if($errors->has('dataEmprestimo'))
+                <label>Data do Reserva</label>
+                <input type="date" name="dataReserva" value="{{$reserva->dataReserva}}" class="form-control @if($errors->has('dataReserva')) is-invalid @endif">
+                @if($errors->has('dataReserva'))
                     <span class="invalid-feedback">
-                       <strong>{{$errors->first('dataEmprestimo')}}</strong>
+                       <strong>{{$errors->first('dataReserva')}}</strong>
                     </span>
                 @endif
             </p>
@@ -44,15 +44,7 @@
                 </select>
             </div>
 
-            <p class="form-group">
-                <label>Data da devolução</label>
-                <input type="date" name="dataDevolucao" value="{{$reserva->dataDevolucao}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">
-                @if($errors->has('dataDevolucao'))
-                    <span class="invalid-feedback">
-                       <strong>{{$errors->first('dataDevolucao')}}</strong>
-                    </span>
-                @endif
-            </p>
+
 
 
 

@@ -599,3 +599,9 @@ input.checkbox:checked:after {
     color: #FFFFFF;
 }
 /*--- //Responsive Code ---*/
+
+/*-- Edição do busxar de relatorios--*/
+
+#formRelatorio{
+    padding-left: 50%;
+}

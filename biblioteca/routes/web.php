@@ -107,6 +107,15 @@ Route::group(['middleware' => ['auth']], function (){
 
         });
 
+        Route::prefix('relatorios')->group(function () {
+
+            Route::get('/', 'RelatorioController@index')->name('relatorio.index');
+            Route::get('pesquisar', 'RelatorioController@pesquisar')->name('relatorio.pesquisar');
+
+            Route::get('relatorio', 'RelatorioController@relatorio')->name('relatorio.relatorio');
+
+        });
+
         Route::prefix('enderecos')->group(function () {
 
             Route::get('/', 'EnderecoController@index')->name('endereco.index');

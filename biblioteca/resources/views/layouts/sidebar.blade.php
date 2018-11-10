@@ -143,14 +143,23 @@
             </li>
 
 
-            @if( Auth::user()->tipos_id == 3 || Auth::user()->tipos_id == 1)
+            @if( Auth::user()->tipos_id == 1)
             <li>
-                <a href="pages/calendar.html">
-                    <i class="fa fa-calendar"></i> <span>Calendar</span>
+                <a href="{{route('relatorio.index')}}">
+                    <i class="fa fa-calendar"></i> <span>Relatorio</span>
                     {{--<small class="label pull-right bg-red">3</small>--}}
                 </a>
             </li>
             @endif
+
+            @if( Auth::user()->tipos_id == 3 || Auth::user()->tipos_id == 1)
+                <li>
+                    <a href="pages/calendar.html">
+                        <i class="fa fa-calendar"></i> <span>Calendar</span>
+                        {{--<small class="label pull-right bg-red">3</small>--}}
+                    </a>
+                </li>
+                @endif
 
             </ul>
         </section>
