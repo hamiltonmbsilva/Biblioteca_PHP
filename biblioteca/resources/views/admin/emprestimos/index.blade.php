@@ -19,44 +19,35 @@
 
             </thead>
             <tbody>
-            @foreach($emprestimo as $r)
+            @foreach( $emprestimos as $resultado)
+                @foreach(\App\Exemplares::whereHas('emprestimos', function ($query) use ($resultado){
+                    $query->where('emprestimos_id', $resultado->id);
+                        })->get() as $res)
+
                 <tr>
-                    <td>{{$r->id}}</td>
-                    <td>{{ Auth::user()->name }}
-                        {{--@foreach($user as $u)--}}
-                            {{--<option value="{{$u->id}}"--}}
-                                    {{--@if($r->users_id == $u->id)--}}
-                                    {{--selected>{{$u->name}}--}}
-                                {{--@endif--}}
-                            {{--</option>--}}
-
-
-                        {{--@endforeach--}}
-                    </td>
-                    <td>{{$r->dataEmprestimo}}</td>
+                    <td>{{$resultado->id}}</td>
                     <td>
-                        @foreach($exemplar as $e )
-                            @foreach($livro as $l)
-                                @foreach($emprestimo as $r)
-                                    <option value="{{$e->id}}"
-                                    @if(($e->livros_id == $l->id)&&($r->exemplares_id == $e->id) ))
-
-                                        >{{$l->titulo}}</option>
-                                    @endif
-                                    {{--<option value="{{$e->id}}">{{$e->livros_id}}</option>--}}
-                                 @endforeach
-                            @endforeach
+                        @foreach($usuario as $u)
+                            @if($resultado->users_id == $u->id)
+                                {{$u->name}}
+                            @endif
                         @endforeach
 
                     </td>
-                    <td>{{$r->dataDevolucao}}</td>
+                    <td>{{$resultado->dataEmprestimo}}</td>
                     <td>
-                        <a href="{{route('emprestimo.exibir', ['id'=> $r->id])}}" class="btn btn-success">Consultar</a>
-                        <a href="{{route('emprestimo.edit', ['emprestimo'=> $r->id])}}" class="btn btn-primary">Editar</a>
-                        <a href="{{route('emprestimo.remove', ['id'=> $r->id])}}" class="btn btn-danger">Excluir</a>
+                        {{$res->livro->titulo}}
+
+                    </td>
+                    <td>{{$resultado->dataDevolucao}}</td>
+                    <td>
+                        <a href="{{route('emprestimo.exibir', ['id'=> $resultado->id])}}" class="btn btn-success">Consultar</a>
+                        <a href="{{route('emprestimo.edit', ['emprestimo'=> $resultado->id])}}" class="btn btn-primary">Editar</a>
+                        <a href="{{route('emprestimo.remove', ['id'=> $resultado->id])}}" class="btn btn-danger">Excluir</a>
 
                     </td>
                 </tr>
+                @endforeach
             @endforeach
             </tbody>
         </table>

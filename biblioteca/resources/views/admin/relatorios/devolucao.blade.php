@@ -7,7 +7,7 @@
     <h3 class="">Pesquisar</h3>
 
         <div>
-            <form class="form-inline col-12 col-sm-12"  action="{{route('relatorio.pesquisar')}}"  method="post">
+            <form class="form-inline col-12 col-sm-12"  action="{{route('relatorio.devolucao')}}"  method="post">
                 {{csrf_field()}}
                 <div class="row">
                     <div class="input-group  col-sm-6" >
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="input-group  col-sm-5 float-right">
-                        <a href="{{route('relatorio.relatorio')}}" class="float-right btn btn-success">Gerar relatorio em PDF</a>
+                        <a href="{{route('relatorio.relatorioDevolucao')}}" class="float-right btn btn-success">Gerar relatorio em PDF</a>
                     </div>
                 </div>
             </form>

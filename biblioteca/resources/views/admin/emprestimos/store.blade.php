@@ -11,19 +11,14 @@
             {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
             {{csrf_field()}}
 
-            {{--<p class="form-group">--}}
-                {{--<label>Usuario</label>--}}
-                {{--<input type="text" name="users_id" value="{{Auth::user()->name}}" class="form-control ">--}}
-
-            {{--</p>--}}
 
             <div class="form-group">
                 <label>Categoria</label>
                 <select name="users_id" class="form-control">
                     @foreach($user as $u)
-                        @if(Auth::user()->id == $u->id)
+                        {{--@if(Auth::user()->id == $u->id)--}}
                         <option value="{{$u->id}}">{{$u->name}}</option>
-                        @endif
+                        {{--@endif@endif--}}
                     @endforeach
                 </select>
             </div>

@@ -136,32 +136,104 @@
                 </a>
             </li>
 
+            @if( Auth::user()->tipos_id == 2 || Auth::user()->tipos_id == 1 )
             <li>
                 <a href="{{route('emprestimo.index')}}" >
                     <i class="fa fa-book"></i> <span>Emprestimo de Livros</span>
                 </a>
             </li>
+            @endif
+
 
 
             @if( Auth::user()->tipos_id == 1)
-            <li>
-                <a href="{{route('relatorio.index')}}">
-                    <i class="fa fa-calendar"></i> <span>Relatorio</span>
-                    {{--<small class="label pull-right bg-red">3</small>--}}
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>Relatorios</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{route('relatorio.livro')}}">
+                            <i class="fa fa-calendar"></i> <span>Relatorio todos os Livros</span>
+                            {{--<small class="label pull-right bg-red">3</small>--}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('relatorio.index')}}">
+                            <i class="fa fa-calendar"></i> <span>Relatorio Livro Emprestado</span>
+                            {{--<small class="label pull-right bg-red">3</small>--}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('relatorio.reservado')}}">
+                            <i class="fa fa-calendar"></i> <span>Relatorio Livro Reservado</span>
+                            {{--<small class="label pull-right bg-red">3</small>--}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('relatorio.usuario')}}">
+                            <i class="fa fa-calendar"></i> <span>Relatorio De todo os Usuarios</span>
+                            {{--<small class="label pull-right bg-red">3</small>--}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('relatorio.devolucao')}}">
+                            <i class="fa fa-calendar"></i> <span>Relatorio Livros em atrasos</span>
+                            {{--<small class="label pull-right bg-red">3</small>--}}
+                        </a>
+                    </li>
+                </ul>
             </li>
             @endif
 
-            @if( Auth::user()->tipos_id == 3 || Auth::user()->tipos_id == 1)
-                <li>
-                    <a href="pages/calendar.html">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        {{--<small class="label pull-right bg-red">3</small>--}}
-                    </a>
-                </li>
-                @endif
 
-            </ul>
+            @if( Auth::user()->tipos_id == 1 || Auth::user()->tipos_id == 2 )
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="{{route('grafico.reservado')}}">
+                                <i class="fa fa-calendar"></i> <span>Livros Reservados</span>
+                                {{--<small class="label pull-right bg-red">3</small>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('grafico.emprestado')}}">
+                                <i class="fa fa-calendar"></i> <span>Livros Emprestados</span>
+                                {{--<small class="label pull-right bg-red">3</small>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('grafico.reservadoCategoria')}}">
+                                <i class="fa fa-calendar"></i> <span>Reservados por Categoria</span>
+                                {{--<small class="label pull-right bg-red">3</small>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('grafico.emprestadoCategoria')}}">
+                                <i class="fa fa-calendar"></i> <span>Emprestados por Categoria</span>
+                                {{--<small class="label pull-right bg-red">3</small>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('grafico.total')}}">
+                                <i class="fa fa-calendar"></i> <span>Emprestados e Reservados</span>
+                                {{--<small class="label pull-right bg-red">3</small>--}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
+
+
+
         </section>
         <!-- /.sidebar -->
     </aside>

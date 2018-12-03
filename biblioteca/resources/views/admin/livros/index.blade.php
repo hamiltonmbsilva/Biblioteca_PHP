@@ -17,6 +17,7 @@
                 <th>Autores</th>
                 <th>Ano</th>
                 <th>Assunto</th>
+                <th>Tipo de livro</th>
                 <th>Categoria</th>
                 <th>Ações</th>
             </tr>
@@ -35,7 +36,16 @@
                     <td>{{$l->autores}}</td>
                     <td>{{$l->ano}}</td>
                     <td>{{$l->assuntos}}</td>
-                    <td>@foreach($categoria as $c)
+                    <td>
+                        @if($l->ehtipo == 0)
+                            <p>Livro Digital</p>
+                        @endif
+                            @if($l->ehtipo == 1)
+                                <p>Livro Fisico</p>
+                            @endif
+
+                    <td>
+                        @foreach($categoria as $c)
                             @if($l->categorias_id == $c->id)
                                 {{$c->nome}}
                             @endif

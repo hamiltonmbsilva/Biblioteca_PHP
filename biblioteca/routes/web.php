@@ -110,9 +110,31 @@ Route::group(['middleware' => ['auth']], function (){
         Route::prefix('relatorios')->group(function () {
 
             Route::get('/', 'RelatorioController@index')->name('relatorio.index');
-            Route::get('pesquisar', 'RelatorioController@pesquisar')->name('relatorio.pesquisar');
+            Route::any('/livro', 'RelatorioController@livro')->name('relatorio.livro');
+            Route::any('/pesquisar', 'RelatorioController@pesquisar')->name('relatorio.pesquisar');
+            Route::any('/reservado', 'RelatorioController@reservado')->name('relatorio.reservado');
+            Route::any('/usuario', 'RelatorioController@usuario')->name('relatorio.usuario');
+            Route::any('/devolucao', 'RelatorioController@devolucao')->name('relatorio.devolucao');
+
 
             Route::get('relatorio', 'RelatorioController@relatorio')->name('relatorio.relatorio');
+            Route::get('pdfLivro', 'RelatorioController@pdfLivro')->name('relatorio.pdfLivro');
+            Route::get('pdfReservado', 'RelatorioController@pdfReservado')->name('relatorio.pdfReservado');
+            Route::get('pdfUsuario', 'RelatorioController@pdfUsuario')->name('relatorio.pdfUsuario');
+            Route::get('pdfDevolucao', 'RelatorioController@pdfDevolucao')->name('relatorio.pdfDevolucao');
+
+        });
+
+        Route::prefix('graficos')->group(function () {
+
+            Route::get('/', 'GraficoController@index')->name('grafico.index');
+            Route::any('/emprestado', 'GraficoController@emprestado')->name('grafico.emprestado');
+            Route::any('/reservado', 'GraficoController@reservado')->name('grafico.reservado');
+            Route::any('/reservadoCategoria', 'GraficoController@reservadoCategoria')->name('grafico.reservadoCategoria');
+            Route::any('/emprestadoCategoria', 'GraficoController@emprestadoCategoria')->name('grafico.emprestadoCategoria');
+            Route::any('/total', 'GraficoController@total')->name('grafico.total');
+
+            Route::get('pdfEmprestimo', 'GraficoController@pdfEmprestimo')->name('grafico.pdfEmprestimo');
 
         });
 

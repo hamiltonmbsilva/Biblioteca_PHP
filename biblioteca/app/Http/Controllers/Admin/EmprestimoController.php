@@ -7,9 +7,12 @@ use App\Exemplares;
 use App\Http\Requests\EmprestimoRequest;
 use App\Livro;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use function Sodium\add;
 
 class EmprestimoController extends Controller
 {
@@ -17,10 +20,24 @@ class EmprestimoController extends Controller
         $user = User::all(['id', 'name']);
         $exemplar = Exemplares::all(['id', 'livros_id']);
         $livro = Livro::all(['id','titulo']);
+        $usuario = User::all();
+        $emprestimos = Emprestimo::with('exemplares')->get();
+
+        $qtd =DB::table('emprestimos')->count();
+        $qtd1 =DB::table('emprestimos')->groupBy('users_id')->where('users_id','2')->count();
+//        dd($qtd1);
+
+
+
+
+        //dd(Auth::user()->emprestimos()->count());
 
         $pagina = Emprestimo::paginate(5);
         $emprestimo = Auth::user()->emprestimos;
-        return view('admin.emprestimos.index', compact('emprestimo', 'user','exemplar', 'livro', 'pagina'));
+//        dd($emprestimo);
+
+        return view('admin.emprestimos.index', compact('emprestimo', 'user','exemplar', 'livro',
+            'pagina','emprestimos','usuario'));
     }
 
     public function new(){
@@ -28,6 +45,7 @@ class EmprestimoController extends Controller
         $user = User::all(['id', 'name']);
         $livro = Livro::all();
         $exemplar = Exemplares::all();
+
 
         return view('admin.emprestimos.store', compact('user','exemplar','livro'));
     }
@@ -38,11 +56,15 @@ class EmprestimoController extends Controller
         $user = User::all(['id', 'name']);
         $exemplar =Exemplares::all();
         $emprestimoData = $request->all();
-//
+        $teste = request('dataEmprestimo');
+        $d = new Carbon($teste);
+       dd($d->addDay(1)->format("d/m/y"));
+
         $request->validated();
 
-
         $emprestimo = Emprestimo::create($request->all());
+
+        dd($request->all());
 
         $emprestimo->exemplares()->attach(request('exemplar'));
 //       dd($emprestimo);
@@ -58,15 +80,20 @@ class EmprestimoController extends Controller
         $exemplar = Exemplares::all(['id', 'livros_id']);
         $livro = Livro::all(['id','titulo']);
 
-        return view('admin.emprestimos.edit', compact('emprestimo','user', 'exemplar','livro'));
+        $usuario = User::all();
+        $emprestimos = Emprestimo::with('exemplares')->get();
+
+        return view('admin.emprestimos.edit', compact('emprestimo','user', 'exemplar','livro',
+            'usuario', 'emprestimos'));
     }
 
     public  function exibir(Emprestimo $emprestimo){
         $user = User::all(['id', 'name']);
         $exemplar = Exemplares::all(['id', 'livros_id']);
         $livro = Livro::all(['id','titulo']);
+        $emprestimos = Emprestimo::with('exemplares')->get();
 
-        return view('admin.emprestimos.consulta', compact('emprestimo','user', 'exemplar','livro'));
+        return view('admin.emprestimos.consulta', compact('emprestimo','user', 'exemplar','livro','emprestimos'));
     }
 
     public function update(EmprestimoRequest $request, $id){

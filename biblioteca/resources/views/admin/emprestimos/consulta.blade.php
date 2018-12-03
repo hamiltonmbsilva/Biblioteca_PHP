@@ -35,14 +35,22 @@
             <div class="form-group">
                 <label>Livros</label>
                 <p name="exemplar" class="form-control">
-                    @foreach($exemplar as $e )
-                        @foreach($livro as $l)
-                            @if($e->livros_id == $l->id)
-                                {{$l->titulo}}
-                                {{--<option value="{{$e->id}}"></option>--}}
-                            @endif
+                    @foreach( $emprestimos as $resultado)
+                        @foreach(\App\Exemplares::whereHas('emprestimos', function ($query) use ($resultado){
+                            $query->where('emprestimos_id', $resultado->id);
+                                })->get() as $res)
+
+                            {{$res->livro->titulo}}
                         @endforeach
                     @endforeach
+                    {{--@foreach($exemplar as $e )--}}
+                        {{--@foreach($livro as $l)--}}
+                            {{--@if($e->livros_id == $l->id)--}}
+                                {{--{{$l->titulo}}--}}
+                                {{--<option value="{{$e->id}}"></option>--}}
+                            {{--@endif--}}
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </p>
             </div>
 
