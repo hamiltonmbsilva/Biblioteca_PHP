@@ -26,6 +26,9 @@ class EmprestimoController extends Controller
         $qtd =DB::table('emprestimos')->count();
         $qtd1 =DB::table('emprestimos')->groupBy('users_id')->where('users_id','2')->count();
 //        dd($qtd1);
+        $teste = request('dataEmprestimo');
+        $d = new Carbon($teste);
+        $devolucao = $d->addDay(15)->format("d/m/y");
 
 
 
@@ -37,7 +40,7 @@ class EmprestimoController extends Controller
 //        dd($emprestimo);
 
         return view('admin.emprestimos.index', compact('emprestimo', 'user','exemplar', 'livro',
-            'pagina','emprestimos','usuario'));
+            'pagina','emprestimos','usuario', 'devolucao'));
     }
 
     public function new(){
@@ -45,33 +48,47 @@ class EmprestimoController extends Controller
         $user = User::all(['id', 'name']);
         $livro = Livro::all();
         $exemplar = Exemplares::all();
+        $teste = request('dataEmprestimo');
+        $d = new Carbon($teste);
+        $devolucao = $d->addDay(15)->format("d/m/y");
 
 
-        return view('admin.emprestimos.store', compact('user','exemplar','livro'));
+        return view('admin.emprestimos.store', compact('user','exemplar','livro','devolucao'));
     }
 
     //função para gravar um restaurante
-    public function store(EmprestimoRequest $request){
+    public function store(Request $request){
+        //EmprestimoRequest $request
 
         $user = User::all(['id', 'name']);
         $exemplar =Exemplares::all();
-        $emprestimoData = $request->all();
+
+
         $teste = request('dataEmprestimo');
         $d = new Carbon($teste);
-       dd($d->addDay(1)->format("d/m/y"));
+        $devolucao = $d->addDay(15)->format("y/m/d");
 
-        $request->validated();
+//        $teste1 = Carbon::parse('d');
+//
+//       dd($teste1->isoFormat('dddd'));
 
-        $emprestimo = Emprestimo::create($request->all());
+//        $request1->validated();
 
-        dd($request->all());
+        $emprestimo = new Emprestimo();
+        $emprestimo->dataEmprestimo = $request->dataEmprestimo;
+        $emprestimo->dataDevolucao = $devolucao;
+        $emprestimo->users_id = $request->users_id;
+        $emprestimo->save();
+
+
+
+//        $emprestimo = Emprestimo::create($request->all());
+
 
         $emprestimo->exemplares()->attach(request('exemplar'));
-//       dd($emprestimo);
-
 
         flash('Emprestimo cadastrado com sucesso!')->success();
-        return redirect()->route('emprestimo.index',compact('user','exemplar','livro'));
+        return redirect()->route('emprestimo.index',compact('user','exemplar','livro','devolucao'));
     }
 
     //função para editar um restaurante

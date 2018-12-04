@@ -20,53 +20,6 @@
 
 <body>
 
-<div class="container form-inline" id="divCentral">
-    <h1 class="float-left">Reservas</h1>
-
-    <table class="table table-striped">
-        <thead>
-
-        <tr>
-            <th>#</th>
-            <th>Nome do Usuario</th>
-            <th>Nome do Livro</th>
-            <th>Data da Reserva</th>
-
-        </tr>
-
-        </thead>
-        <tbody>
-
-        @foreach( $reservas as $resultado)
-            @foreach(\App\Exemplares::whereHas('reservas', function ($query) use ($resultado){
-                $query->where('reservas_id', $resultado->id);
-                    })->get() as $res)
-                {{--{{dd($resultado->dataReserva)}}--}}
-                <tr>
-
-                    <td>{{$res->id}}</td>
-
-                    <td>
-                        @foreach($usuario as $u)
-                            @if($resultado->users_id == $u->id)
-                                {{$u->name}}
-                            @endif
-                        @endforeach
-                    </td>
-
-                    <td>{{$res->livro->titulo}}</td>
-
-                    <td>{{$resultado->dataReserva}} </td>
-
-
-
-                </tr>
-            @endforeach
-        @endforeach
-        </tbody>
-    </table>
-
-</div>
 
 {{----Emprestimo----}}
 

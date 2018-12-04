@@ -62,8 +62,8 @@ class RelatorioController extends Controller
         $dataInicio = $request->get('dataInicio');
         $dataFinal = $request->get('dataFinal');
 
-        $emprestimo = DB::table('emprestimos')->where('dataEmprestimo ','>=',$dataInicio)
-            ->where('dataEmprestimo','<=', $dataFinal);
+        $emprestimo = DB::table('emprestimos')->where('dataEmprestimo ','=',$dataInicio);
+//            ->where('dataEmprestimo','<', $dataFinal);
 
         $livro = Livro::all();
         $exemplar = Exemplares::all();
@@ -139,7 +139,7 @@ class RelatorioController extends Controller
 
     }
 
-    public function relatorioReservado()
+    public function pdfReservado()
     {
 
         $usuario = User::all();

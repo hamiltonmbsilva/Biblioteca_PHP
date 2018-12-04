@@ -101,7 +101,7 @@ class GraficoController extends Controller
 
         $reservas = Reserva::with('exemplares')->paginate($this->totalPage);
 
-        dd($reservas);
+//        dd($reservas);
 
         $lava = new Lavacharts();
         $reservaPorMes = $lava->DataTable();

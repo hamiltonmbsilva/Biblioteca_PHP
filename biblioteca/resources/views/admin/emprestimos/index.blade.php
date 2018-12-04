@@ -15,6 +15,7 @@
                 <th>Data do Emprestimo</th>
                 <th>Nome do Livro</th>
                 <th>Data de Devolução</th>
+                {{--<th>Data de Devolução</th>--}}
             </tr>
 
             </thead>
@@ -40,6 +41,7 @@
 
                     </td>
                     <td>{{$resultado->dataDevolucao}}</td>
+                    {{--<td>{{$devolucao}}</td>--}}
                     <td>
                         <a href="{{route('emprestimo.exibir', ['id'=> $resultado->id])}}" class="btn btn-success">Consultar</a>
                         <a href="{{route('emprestimo.edit', ['emprestimo'=> $resultado->id])}}" class="btn btn-primary">Editar</a>

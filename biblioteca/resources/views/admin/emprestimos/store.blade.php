@@ -46,16 +46,23 @@
                 </select>
             </div>
 
-            <p class="form-group">
-                <label>Data da Devolução</label>
-                <input type="date" name="dataDevolucao" value="{{old('dataDevolucao')}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">
-                @if($errors->has('dataDevolucao'))
-                    <span class="invalid-feedback">
-                        <strong>{{$errors->first('dataDevolucao')}}</strong>
-                    </span>
-                @endif
-            </p>
-
+            {{--<p class="form-group">--}}
+                {{--<label>Data da Devolução</label>--}}
+                {{--<input type="date" name="dataDevolucao" value="{{old('dataDevolucao')}}" class="form-control @if($errors->has('dataDevolucao')) is-invalid @endif">--}}
+                {{--@if($errors->has('dataDevolucao'))--}}
+                    {{--<span class="invalid-feedback">--}}
+                        {{--<strong>{{$errors->first('dataDevolucao')}}</strong>--}}
+                        {{--{{dd($devolucao)}}--}}
+                        {{--<strong>{{$devolucao}}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</p>--}}
+            {{--<tbody>--}}
+                {{--<td>--}}
+                    {{--<label>Data da Devolução</label>--}}
+                    {{--{{$devolucao}}--}}
+                {{--</td>--}}
+            {{--</tbody>--}}
 
             {{--<div class="form-group">--}}
                 {{--<label>Selecionar o tipo de Livro</label>--}}

@@ -12,7 +12,8 @@ class Emprestimo extends Model
 
     protected $fillable = [
 
-        'dataEmprestimo', 'dataDevolucao','users_id','situacao_id',
+        'dataEmprestimo', 'users_id',
+//        'situacao_id','dataDevolucao',
     ];
 
 

@@ -68,56 +68,55 @@
 
 </div>
 
-{{----Emprestimo----}}
 
-<div class="container form-inline">
-    <h1 class="float-left">Emprestimos</h1>
+{{--<div class="container form-inline" id="divCentral">--}}
+    {{--<h1 class="float-left">Reservas</h1>--}}
 
-    <table class="table table-striped">
-        <thead>
+    {{--<table class="table table-striped">--}}
+        {{--<thead>--}}
 
-        <tr>
-            <th>#</th>
-            <th>Nome do Usuario</th>
-            <th>Nome do Livro</th>
-            <th>Data do Emprestimo</th>
-            <th>Data da Devolução</th>
+        {{--<tr>--}}
+            {{--<th>#</th>--}}
+            {{--<th>Nome do Usuario</th>--}}
+            {{--<th>Nome do Livro</th>--}}
+            {{--<th>Data da Reserva</th>--}}
 
-        </tr>
+        {{--</tr>--}}
 
-        </thead>
-        <tbody>
+        {{--</thead>--}}
+        {{--<tbody>--}}
 
-        @foreach( $emprestimos as $resultado)
-            @foreach(\App\Exemplares::whereHas('emprestimos', function ($query) use ($resultado){
-                $query->where('emprestimos_id', $resultado->id);
-                    })->get() as $res)
+        {{--@foreach( $reservas as $resultado)--}}
+            {{--@foreach(\App\Exemplares::whereHas('reservas', function ($query) use ($resultado){--}}
+                {{--$query->where('reservas_id', $resultado->id);--}}
+                    {{--})->get() as $res)--}}
+                {{--{{dd($resultado->dataReserva)}}--}}
+                {{--<tr>--}}
 
-                <tr>
+                    {{--<td>{{$res->id}}</td>--}}
 
-                    <td>{{$res->id}}</td>
+                    {{--<td>--}}
+                        {{--@foreach($usuario as $u)--}}
+                            {{--@if($resultado->users_id == $u->id)--}}
+                                {{--{{$u->name}}--}}
+                            {{--@endif--}}
+                        {{--@endforeach--}}
+                    {{--</td>--}}
 
-                    <td>
-                        @foreach($usuario as $u)
-                            @if($resultado->users_id == $u->id)
-                                {{$u->name}}
-                            @endif
-                        @endforeach
-                    </td>
+                    {{--<td>{{$res->livro->titulo}}</td>--}}
 
-                    <td>{{$res->livro->titulo}}</td>
-
-                    <td>{{$resultado->dataEmprestimo}} </td>
-                    <td>{{$resultado->dataDevolucao}} </td>
+                    {{--<td>{{$resultado->dataReserva}} </td>--}}
 
 
 
-                </tr>
-            @endforeach
-        @endforeach
-        </tbody>
-    </table>
+                {{--</tr>--}}
+            {{--@endforeach--}}
+        {{--@endforeach--}}
+        {{--</tbody>--}}
+    {{--</table>--}}
 
-</div>
+{{--</div>--}}
+
+
 </body>
 </html>
